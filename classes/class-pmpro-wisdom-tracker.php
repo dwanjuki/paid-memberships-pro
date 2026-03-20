@@ -860,6 +860,7 @@ class PMPro_Wisdom_Tracker {
 				'marketing_optin' => 'no',
 			] );
 
+			/* translators: %s: Formatted date value. */
 			$marketing_text = sprintf( esc_html__( 'Thank you for opting in to tracking. Would you like to receive occasional news about this %s, including details of new features and special offers?', 'paid-memberships-pro' ), $this->what_am_i );
 			$marketing_text = apply_filters( 'wisdom_marketing_text_' . esc_attr( $this->plugin_name ), $marketing_text ); ?>
 

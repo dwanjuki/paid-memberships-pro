@@ -80,6 +80,7 @@ function pmpro_personal_data_eraser( $email_address, $page = 1 ) {
 			if( $num_orders == 1 ) {
 				$messages[] = __( '1 PMPro order was retained for business records.', 'paid-memberships-pro' );
 			} else {
+				/* translators: %s: Context label shown in this section. */
 				$messages[] = sprintf( __( '%d PMPro orders were retained for business records.', 'paid-memberships-pro' ), $num_orders );
 			}
 		}

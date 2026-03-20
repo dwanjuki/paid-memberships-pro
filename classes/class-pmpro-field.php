@@ -299,10 +299,12 @@ class PMPro_Field {
 	function __get( $name ) {
 		if ( isset( $this->$name ) ) {
 			if ( ! $this->is_valid_property( $name ) ) {
+				/* translators: 1: Property name, 2: Field type. */
 				_doing_it_wrong( __FUNCTION__, sprintf( esc_html__( 'The property %s is not valid for the field type %s.', 'paid-memberships-pro' ), esc_html( $name ), esc_html( $this->type ) ), '3.4' );
 			}
 			return $this->$name;
 		} else {
+			/* translators: %s: Property name. */
 			_doing_it_wrong( __FUNCTION__, sprintf( esc_html__( 'The property %s does not exist.', 'paid-memberships-pro' ), esc_html( $name ) ), '3.4' );
 		}
 
@@ -341,18 +343,22 @@ class PMPro_Field {
 	function __call( $name, $arguments ) {
 		switch( $name ) {
 			case 'set':
+				/* translators: %s: Property or method name. */
 				_doing_it_wrong( __FUNCTION__, sprintf( esc_html__( 'The method %s of PMPro_Field has become private and will not be available in a future version. Instead, use the $args property of the constructor when creating a new PMPro_Field object.', 'paid-memberships-pro' ), esc_html( $name ) ), '3.4' );
 				break;
 			case 'saveUsersTable':
 			case 'saveTermRelationshipsTable':
 			case 'saveFile':
+				/* translators: %s: Property or method name. */
 				_doing_it_wrong( __FUNCTION__, sprintf( esc_html__( 'The method %s of PMPro_Field has become private and will not be available in a future version. Instead, use the save_field_for_user method of the PMPro_Field object.', 'paid-memberships-pro' ), esc_html( $name ) ), '3.4' );
 				break;
 			case 'getHTML':
 			case 'getDependenciesJS':
+				/* translators: %s: Property or method name. */
 				_doing_it_wrong( __FUNCTION__, sprintf( esc_html__( 'The method %s of PMPro_Field has become private and will not be available in a future version. Instead, use the display() method of the PMPro_Field object.', 'paid-memberships-pro' ), esc_html( $name ) ), '3.4' );
 				break;
 			default:
+				/* translators: %s: Property or method name. */
 				_doing_it_wrong( __FUNCTION__, sprintf( esc_html__( 'The method %s of PMPro_Field has become private and will not be available in a future version.', 'paid-memberships-pro' ), esc_html( $name ) ), '3.4' );
 				break;
 		}
@@ -816,6 +822,7 @@ class PMPro_Field {
 		{
 			// Make sure file was uploaded.
 			if ( ! is_uploaded_file( $file['tmp_name'] ) ) {
+				/* translators: %s: File name or file-related value. */
 				pmpro_setMessage( sprintf( esc_html__( 'Sorry, the file %s was not uploaded.', 'paid-memberships-pro' ), $file['name'] ), 'pmpro_error' );
 				return false;
 			}
@@ -1163,6 +1170,7 @@ class PMPro_Field {
 				}
 
 				if( ! empty( $file['fullurl'] ) ) {
+					/* translators: 1: First link URL or anchor attributes, 2: Second link URL or anchor attributes. */
 					$r_beginning .= '<div class="pmpro_form_field-file-name pmpro_file_' . esc_attr( $this->name ) . '_name">' . sprintf(__('Current File: %s', 'paid-memberships-pro' ), '<a target="_blank" href="' . esc_url( $file['fullurl'] ) . '">' . esc_html( basename($file['filename']) ) . '</a>' ) . '</div>';
 				} elseif( is_string( $value ) ) {
 					$r_beginning .= sprintf(__('Current File: %s', 'paid-memberships-pro' ), basename($value) );

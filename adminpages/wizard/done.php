@@ -62,6 +62,7 @@
 					'https://www.paidmembershipspro.com/login/'
 				);
 
+				/* translators: 1: First link URL or anchor attributes, 2: Second link URL or anchor attributes, 3: Third link URL or anchor attributes. */
 				echo sprintf( esc_html__( "In step 1, you chose the %s site type.", 'paid-memberships-pro' ), '<strong>' . esc_html( $site_types[ $site_type ] ) . '</strong>' ) . ' ';
 				echo sprintf(
 					/* translators: %s: URL to the PMPro use case hub for the chosen site type */

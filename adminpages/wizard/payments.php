@@ -42,6 +42,7 @@
 							'target' => array(),
 						),
 					);
+						/* translators: %s: URL to Stripe webhook setup documentation. */
 					printf( wp_kses( __( 'After connecting to Stripe, it is important to <a href="%s" target="_blank">set up your Stripe webhooks</a> to make sure that PMPro is notified of events that happen in Stripe.', 'paid-memberships-pro' ), $allowed_webhook_message_html ), 'https://www.paidmembershipspro.com/gateway/stripe/setup/#webhook' );
 					?>
 				</p>

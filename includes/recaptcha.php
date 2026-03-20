@@ -228,6 +228,7 @@ function pmpro_recaptcha_validation_check( $continue = true ) {
 	if ( true === $recaptcha_valid ) {
 		return true;
 	} else {
+		/* translators: %s: reCAPTCHA error message. */
 		pmpro_setMessage( sprintf( __( 'reCAPTCHA failed. (%s) Please try again.', 'paid-memberships-pro' ), $recaptcha_valid ), 'pmpro_error' );
 		return false;
 	}

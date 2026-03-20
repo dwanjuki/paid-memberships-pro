@@ -846,6 +846,7 @@ function pmpro_login_forms_handler_nav( $pmpro_form ) { ?>
 			$links = array();
 
 			if ( $pmpro_form != 'login' ) {
+				/* translators: 1: First link URL or anchor attributes, 2: Second link URL or anchor attributes. */
 				$links['login'] = sprintf( '<a href="%s">%s</a>', esc_url( pmpro_login_url() ), esc_html__( 'Log In', 'paid-memberships-pro' ) );
 			}
 
@@ -853,6 +854,7 @@ function pmpro_login_forms_handler_nav( $pmpro_form ) { ?>
 				$levels_page_id = get_option( 'pmpro_levels_page_id' );
 
 				if ( $levels_page_id && pmpro_are_any_visible_levels() ) {
+					/* translators: 1: First link URL or anchor attributes, 2: Second link URL or anchor attributes. */
 					$links['register'] = sprintf( '<a href="%s">%s</a>', esc_url( pmpro_url( 'levels' ) ), esc_html__( 'Join Now', 'paid-memberships-pro' ) );
 				} else {
 					$links['register'] = sprintf( '<a href="%s">%s</a>', esc_url( wp_registration_url() ), esc_html__( 'Register', 'paid-memberships-pro' ) );
@@ -860,6 +862,7 @@ function pmpro_login_forms_handler_nav( $pmpro_form ) { ?>
 			}
 
 			if ( $pmpro_form != 'lost_password' ) {
+				/* translators: 1: First link URL or anchor attributes, 2: Second link URL or anchor attributes. */
 				$links['lost_password'] = sprintf( '<a href="%s">%s</a>', esc_url( add_query_arg( 'action', urlencode( 'reset_pass' ), pmpro_login_url() ) ), esc_html__( 'Lost Password?', 'paid-memberships-pro' ) );
 			}
 

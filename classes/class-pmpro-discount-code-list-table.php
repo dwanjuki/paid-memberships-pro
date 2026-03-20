@@ -368,6 +368,7 @@ class PMPro_Discount_Code_List_Table extends WP_List_Table {
 	public function column_discount_code( $item ) {
 
 		?>
+		<?php /* translators: %s: URL to the Discount Codes admin page. */ ?>
 		<strong><a title="<?php echo esc_attr( sprintf( __( 'Edit Code: %s', 'paid-memberships-pro' ), $item->id ) ); ?>" href="<?php echo esc_url( add_query_arg( array( 'page' => 'pmpro-discountcodes', 'edit' => $item->id ), admin_url('admin.php' ) ) ); ?>"><?php echo esc_html( $item->code ); ?></a></strong>
 		<div class="row-actions">
 		<?php

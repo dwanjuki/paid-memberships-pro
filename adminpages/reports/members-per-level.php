@@ -32,6 +32,7 @@ function pmpro_report_members_per_level_widget() {
 		<?php pmpro_report_draw_active_members_per_level_chart(); ?>
 		<?php if ( function_exists( 'pmpro_report_members_per_level_page' ) ) { ?>
 			<p class="pmpro_report-button">
+				<?php /* translators: %s: URL to the related report page. */ ?>
 				<a class="button button-primary" href="<?php echo esc_url( admin_url( 'admin.php?page=pmpro-reports&report=members_per_level' ) ); ?>" aria-label="<?php echo esc_attr( sprintf( __( 'View the full %s report', 'paid-memberships-pro' ), $pmpro_reports['members_per_level'] ) ); ?>"><?php esc_html_e('Details', 'paid-memberships-pro' );?></a>
 			</p>
 		<?php } ?>

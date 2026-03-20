@@ -69,6 +69,7 @@
 <body>
 	<header class="header">
 		<h1><?php bloginfo( 'sitename' ); ?></h1>
+		<?php /* translators: %s: Order code (or order ID when no code exists). */ ?>
 		<h2><?php echo esc_html( sprintf( __( 'Order #%s', 'paid-memberships-pro' ), $order->code ) ); ?></h2>
 		<p>
 			<strong><?php esc_html_e( 'Status', 'paid-memberships-pro' ); ?></strong><br />
@@ -206,6 +207,7 @@
 							if ( ! empty( $subscription_period_end ) && $subscription_period_end !== $order_date ) {
 								?>
 								<p class="<?php echo esc_attr( pmpro_get_element_class( 'pmpro_font-small' ) ); ?>">
+									<?php /* translators: 1: Formatted date, 2: Formatted date. */ ?>
 									<?php echo esc_html( sprintf( __( '%1$s to %2$s', 'paid-memberships-pro' ), $order_date, $subscription_period_end ) ); ?>
 								</p>
 								<?php
@@ -243,6 +245,7 @@
 			<?php } ?>
 		</table>
 		<?php if ( $order->getDiscountCode() ) { ?>
+			<?php /* translators: %s: Order code (or order ID when no code exists). */ ?>
 			<p><?php echo esc_html( sprintf( __( 'Discount Code: %s', 'paid-memberships-pro' ), esc_html( $order->discount_code->code ) ) ); ?></p>
 			</p>
 		<?php } ?>

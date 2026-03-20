@@ -63,6 +63,7 @@
 	if ( $email_template_class ) {
 		$email_variables = array(
 			esc_html__( 'Global Variables', 'paid-memberships-pro' ) => PMPro_Email_Template::get_base_email_template_variables_with_description(),
+			/* translators: %s: Email address. */
 			sprintf( esc_html__( '%s Variables', 'paid-memberships-pro' ), $email_template_class::get_template_name() ) => $email_template_class::get_email_template_variables_with_description(),
 		);
 	} elseif ( in_array( $edit, array( 'header', 'footer' ) ) ) {

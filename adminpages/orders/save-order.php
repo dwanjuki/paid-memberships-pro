@@ -114,6 +114,7 @@ if( isset( $_REQUEST['discount_code_id'] ) ) {
 if ( false !== $order->saveOrder() ) {
 	$pmpro_msg  = __( 'Order saved successfully.', 'paid-memberships-pro' );
 	$pmpro_msg .= ' <a href="' . esc_url( add_query_arg( array( 'page' => 'pmpro-orders', 'id' => $order->id ), admin_url( 'admin.php' ) ) ) . '">'; 
+	/* translators: %s: Order code (or order ID when no code exists). */
 	$pmpro_msg .= sprintf( __( 'View Order # %s', 'paid-memberships-pro' ), $order->code );
 	$pmpro_msg .= '</a>';
 	$pmpro_msgt = 'pmpro_success';

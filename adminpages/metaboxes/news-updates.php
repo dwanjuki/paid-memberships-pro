@@ -46,6 +46,7 @@ function pmpro_dashboard_news_updates_callback() {
 				<?php echo esc_html( date_i18n( get_option( 'date_format' ), $rss_items[0]->get_date( 'U' ) ) ); ?>
 				<br />
 				<a href="<?php echo esc_url( $rss_items[0]->get_permalink() ); ?>"
+					<?php /* translators: %s: Formatted date. */ ?>
 					title="<?php echo esc_attr( sprintf( __( 'Posted %s', 'paid-memberships-pro' ), date_i18n( get_option( 'date_format' ), $rss_items[0]->get_date( 'U' ) ) ) ); ?>">
 					<?php echo esc_html( $rss_items[0]->get_title() ); ?>
 				</a>

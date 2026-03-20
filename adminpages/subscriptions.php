@@ -405,6 +405,7 @@ if ( isset( $_REQUEST['action'] ) && 'link' === $_REQUEST['action'] ) {
 						<?php echo get_avatar( (int)$subscription->get_user_id(), 64 ); ?>
 					</div>
 					<div class="pmpro_member-box-info">
+						<?php /* translators: %s: User name. */ ?>
 						<h2><?php echo wp_kses_post( sprintf( __( 'Member: %s', 'paid-memberships-pro' ), '<strong>' . $sub_user->display_name . '</strong>' ) ); ?></h2>
 						<div class="pmpro_member-box-actions">
 							<?php

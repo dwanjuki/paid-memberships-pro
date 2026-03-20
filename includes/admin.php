@@ -187,6 +187,7 @@ function pmpro_pause_mode_notice() {
 			</div>
 			<div class="pmpro_notification-content">
 				<h3><?php esc_html_e( 'Site URL Change Detected', 'paid-memberships-pro' ); ?></h3>
+				<?php /* translators: %s: Last known site URL wrapped in code tags. */ ?>
 				<p><?php echo wp_kses_post( sprintf( __( '<strong>Warning:</strong> We have detected that your site URL has changed. All PMPro-related cron jobs and automated services have been disabled. Paid Memberships Pro considers %s to be the site URL.', 'paid-memberships-pro' ), '<code>' . esc_url( get_option( 'pmpro_last_known_url' ) ) . '</code>' ) ); ?></p>
 				<?php if ( current_user_can( 'pmpro_manage_pause_mode' ) ) { ?>
 				<p>
@@ -302,8 +303,10 @@ function pmpro_admin_header() {
 					}
 				?>
 				<?php if ( pmpro_license_isValid( null, pmpro_license_get_premium_types() ) ) { ?>
+					<?php /* translators: %s: URL to the PMPro license settings page. */ ?>
 					<?php echo wp_kses_post( sprintf(__( '<a class="pmpro_license_tag pmpro_license_tag-valid" href="%s">Valid License</a>', 'paid-memberships-pro' ), esc_url( add_query_arg( array( 'page' => 'pmpro-license' ), admin_url( 'admin.php' ) ) ) ) ); ?>
 				<?php } elseif ( ! defined( 'PMPRO_LICENSE_NAG' ) || PMPRO_LICENSE_NAG == true ) { ?>
+					<?php /* translators: %s: URL to the PMPro license settings page. */ ?>
 					<?php echo wp_kses_post( sprintf(__( '<a class="pmpro_license_tag pmpro_license_tag-invalid" href="%s">No License</a>', 'paid-memberships-pro' ), esc_url( add_query_arg( array( 'page' => 'pmpro-license' ), admin_url( 'admin.php' ) ) ) ) ); ?>
 				<?php } ?>
 			</div> <!-- end pmpro_meta -->
@@ -327,7 +330,7 @@ function pmpro_admin_footer_text( $text ) {
 
 	return sprintf(
 		wp_kses(
-			/* translators: $1$s - Paid Memberships Pro plugin name; $2$s - testimonial link. */
+			/* translators: 1: URL to testimonial submission page, 2: Plugin name, 3: Team name. */
 			__( 'Please <a href="%1$s" target="_blank" rel="noopener noreferrer">submit a testimonial</a> to help others find %2$s. Thank you from the %3$s team!', 'paid-memberships-pro' ),
 			[
 				'a' => [

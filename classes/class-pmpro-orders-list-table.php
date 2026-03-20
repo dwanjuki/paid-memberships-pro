@@ -904,12 +904,13 @@ class PMPro_Orders_List_Table extends WP_List_Table {
 	 */
 	public function column_order_code( $item ) {
 		?>
+		<?php /* translators: %s: URL to the related WordPress admin page. */ ?>
 		<strong><a title="<?php echo esc_attr( sprintf( __( 'View order # %s', 'paid-memberships-pro' ), $item->code ) ); ?>" href="<?php echo esc_url( add_query_arg( array( 'page' => 'pmpro-orders', 'id' => $item->id ), admin_url( 'admin.php' ) ) ); ?>"><?php echo esc_html( $item->code ); ?></a></strong>
 		<div class="row-actions">
 			<?php
 			$delete_text = esc_html(
 				sprintf(
-					// translators: %s is the Order Code.
+					// translators: %s is the order code (or order ID when no code exists).
 					__( 'Deleting orders is permanent and can affect active users. Are you sure you want to delete order %s?', 'paid-memberships-pro' ),
 					str_replace( "'", '', $item->code )
 				)
@@ -944,7 +945,7 @@ class PMPro_Orders_List_Table extends WP_List_Table {
 
 			$refund_text = esc_html(
 				sprintf(
-					// translators: %s is the Order Code.
+					// translators: %s is the order code (or order ID when no code exists).
 					__( 'Refund order %s at the payment gateway. This action is permanent. The user and admin will receive an email confirmation after the refund is processed. Are you sure you want to refund this order?', 'paid-memberships-pro' ),
 					str_replace( "'", '', $item->code )
 				)
@@ -974,7 +975,7 @@ class PMPro_Orders_List_Table extends WP_List_Table {
 					'<a title="%1$s" href="%2$s">%3$s</a>',
 					esc_attr(
 						sprintf(
-							/* translators: %s is the Order Code. */
+							/* translators: %s is the order code (or order ID when no code exists). */
 							__( 'View order # %s', 'paid-memberships-pro' ),
 							$item->code
 						)
@@ -994,7 +995,7 @@ class PMPro_Orders_List_Table extends WP_List_Table {
 					'<a title="%1$s" href="%2$s">%3$s</a>',
 					esc_attr(
 						sprintf(
-							/* translators: %s is the Order Code. */
+							/* translators: %s is the order code (or order ID when no code exists). */
 							__( 'Copy order # %s', 'paid-memberships-pro' ),
 							$item->code
 						)
@@ -1017,7 +1018,7 @@ class PMPro_Orders_List_Table extends WP_List_Table {
 					'<a title="%1$s" href="%2$s">%3$s</a>',
 					esc_attr(
 						sprintf(
-							/* translators: %s is the Order Code. */
+							/* translators: %s is the order code (or order ID when no code exists). */
 							__( 'Delete order # %s', 'paid-memberships-pro' ),
 							$item->code
 						)
@@ -1029,7 +1030,7 @@ class PMPro_Orders_List_Table extends WP_List_Table {
 					'<a title="%1$s" href="%2$s" target="_blank" rel="noopener noreferrer">%3$s</a>',
 					esc_attr(
 						sprintf(
-							/* translators: %s is the Order Code. */
+							/* translators: %s is the order code (or order ID when no code exists). */
 							__( 'Print or save order # %s as PDF', 'paid-memberships-pro' ),
 							$item->code
 						)
@@ -1049,7 +1050,7 @@ class PMPro_Orders_List_Table extends WP_List_Table {
 					'<a title="%1$s" href="%2$s" data-order="%3$s" class="thickbox email_link">%4$s</a>',
 					esc_attr(
 						sprintf(
-							/* translators: %s is the Order Code. */
+							/* translators: %s is the order code (or order ID when no code exists). */
 							__( 'Send order # %s via email', 'paid-memberships-pro' ),
 							$item->code
 						)
@@ -1063,7 +1064,7 @@ class PMPro_Orders_List_Table extends WP_List_Table {
 			if ( $item->status === 'pending' && $item->payment_type === 'Check' ) {
 				$mark_paid_text = esc_html(
 					sprintf(
-						// translators: %s is the Order Code.
+						// translators: %s is the order code (or order ID when no code exists).
 						__( 'Mark the payment for order %s as received. The user and admin may receive an email confirmation after the order update is processed. Are you sure you want to mark this order as paid?', 'paid-memberships-pro' ),
 						str_replace( "'", '', $item->code )
 					)
@@ -1086,7 +1087,7 @@ class PMPro_Orders_List_Table extends WP_List_Table {
 					'<a title="%1$s" href="%2$s">%3$s</a>',
 					esc_attr(
 						sprintf(
-							/* translators: %s is the Order Code. */
+							/* translators: %s is the order code (or order ID when no code exists). */
 							__( 'Mark order # %s as paid', 'paid-memberships-pro' ),
 							$item->code
 						)
@@ -1099,6 +1100,7 @@ class PMPro_Orders_List_Table extends WP_List_Table {
 			if ( pmpro_allowed_refunds( $item ) ) {
 				$actions['refund'] = sprintf(
 					'<a title="%1$s" href="%2$s">%3$s</a>',
+					/* translators: %s: Order code (or order ID when no code exists). */
 					esc_attr( sprintf( __( 'Refund order # %s', 'paid-memberships-pro' ), $item->code ) ),
 					esc_js( 'javascript:pmpro_askfirst(' . wp_json_encode( $refund_text ) . ', ' . wp_json_encode( $refund_nonce_url ) . '); void(0);' ),
 					esc_html__( 'Refund', 'paid-memberships-pro' )
@@ -1110,6 +1112,7 @@ class PMPro_Orders_List_Table extends WP_List_Table {
 			if ( 'token' === $item->status && pmpro_can_check_token_order_for_completion( $item->id ) ) {
 				$actions['check_token_order'] = sprintf(
 					'<a title="%1$s" href="%2$s">%3$s</a>',
+					/* translators: %s: Order code (or order ID when no code exists). */
 					esc_attr( sprintf( __( 'Recheck payment status for order # %s', 'paid-memberships-pro' ), $item->code ) ),
 					esc_url(
 						wp_nonce_url(
@@ -1165,6 +1168,7 @@ class PMPro_Orders_List_Table extends WP_List_Table {
 	 */
 	public function column_user( $item ) {
 		if ( ! empty( $item->user ) ) {
+			/* translators: %s: URL to the related WordPress admin page. */
 			echo '<a title="' . esc_attr( sprintf( __( 'Edit member %s', 'paid-memberships-pro' ), $item->user->user_login ) ) . '" href="' . esc_url( add_query_arg( array( 'page' => 'pmpro-member', 'user_id' => (int)$item->user->ID ), admin_url( 'admin.php' ) ) ) . '">' . esc_html( $item->user->user_login ) . '</a><br />';
 			echo esc_html( $item->user->user_email );
 		 } elseif ( $item->user_id > 0 ) {

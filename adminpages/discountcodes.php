@@ -279,6 +279,7 @@
 					else
 					{
 						$level = pmpro_getLevel($level_id);
+						/* translators: %s: Error message text from the gateway or API. */
 						$level_errors[] = sprintf(__("Error saving values for the %s level.", 'paid-memberships-pro' ), $level->name);
 					}
 				}
@@ -327,6 +328,7 @@
 
 				if($r2 !== false)
 				{
+					/* translators: %s: Order code (or order ID when no code exists). */
 					$pmpro_msg = sprintf(__("Code %s deleted successfully.", 'paid-memberships-pro' ), $code);
 					$pmpro_msgt = "success";
 				}
@@ -349,7 +351,8 @@
 		}
 	}
 
-	if( ! empty( $pmpro_msg ) && ! empty( $expiration_warning_flag ) ) {
+		if( ! empty( $pmpro_msg ) && ! empty( $expiration_warning_flag ) ) {
+				/* translators: %s: URL to a PMPro article about recurring billing and expiration dates. */
 		$pmpro_msg .= ' <strong>' . sprintf( __( 'WARNING: A level was set with both a recurring billing amount and an expiration date. You only need to set one of these unless you really want this membership to expire after a specific time period. For more information, <a target="_blank" rel="nofollow noopener" href="%s">see our post here</a>.', 'paid-memberships-pro' ), 'https://www.paidmembershipspro.com/important-notes-on-recurring-billing-and-expiration-dates-for-membership-levels/?utm_source=plugin&utm_medium=pmpro-discountcodes&utm_campaign=blog&utm_content=important-notes-on-recurring-billing-and-expiration-dates-for-membership-levels' ) . '</strong>';
 
 		if( $pmpro_msgt == 'success' ) {

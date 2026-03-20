@@ -117,6 +117,7 @@
 			if ( ! empty( $template_subject ) ) {
 				$this->subject = $template_subject;
 			} elseif ( empty( $this->subject ) ) {
+				/* translators: %s: Email address. */
 				$this->subject = ! empty( $pmpro_email_templates_defaults[$this->template]['subject'] ) ? sanitize_text_field( $pmpro_email_templates_defaults[$this->template]['subject'] ) : sprintf(__("An Email From %s", 'paid-memberships-pro' ), get_option("blogname"));
 			}
 
@@ -684,6 +685,7 @@
 			}
 
 			$this->email = $user->user_email;
+			/* translators: %s: Context-specific formatted value for this message. */
 			$this->subject = sprintf(__("Your trial at %s is ending soon", "paid-memberships-pro"), get_option("blogname"));
 
 			$this->data = array(

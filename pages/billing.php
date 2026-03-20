@@ -64,6 +64,7 @@
 							),
 							'strong' => array(),
 						);
+							/* translators: 1: Current user's login name, 2: URL to log out and switch accounts. */
 						echo '<p>' . wp_kses( sprintf( __('You are logged in as <strong>%s</strong>. If you would like to update your billing information for a different account, <a href="%s">log out now</a>.', 'paid-memberships-pro' ), $current_user->user_login, wp_logout_url( esc_url_raw( $_SERVER['REQUEST_URI'] ) ) ), $allowed_html ) . '</p>';
 					?>
 					<div class="<?php echo esc_attr( pmpro_get_element_class( 'pmpro_divider' ) ); ?>"></div>
@@ -396,6 +397,7 @@
 				'rel' => array(),
 			),
 		);
+		/* translators: %s: URL to the levels page. */
 		echo wp_kses( sprintf( __( "You do not have an active membership. <a href='%s'>Choose a membership level.</a>", 'paid-memberships-pro' ), esc_url( pmpro_url( 'levels' ) ) ), $allowed_html );
 	} ?>
 </div> <!-- end pmpro -->

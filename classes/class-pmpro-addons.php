@@ -419,6 +419,7 @@ class PMPro_AddOns {
 
 		// License/access check for premium add ons.
 		if ( isset( $addon['License'] ) && pmpro_license_type_is_premium( $addon['License'] ) && ! $this->can_download_addon_with_license( $addon['License'] ) ) {
+			/* translators: %s: PMPro license type (for example, Standard, Plus, or Builder). */
 			return new WP_Error( 'pmpro_addon_license_required', sprintf( __( 'A valid PMPro %s license is required to install this Add On.', 'paid-memberships-pro' ), ucwords( $addon['License'] ) ) );
 		}
 
@@ -578,6 +579,7 @@ class PMPro_AddOns {
 		$slug  = $this->maybe_extract_slug( $slug_or_plugin );
 		$addon = $slug ? $this->get_addon_by_slug( $slug ) : false;
 		if ( ! empty( $addon ) && isset( $addon['License'] ) && pmpro_license_type_is_premium( $addon['License'] ) && ! $this->can_download_addon_with_license( $addon['License'] ) ) {
+			/* translators: %s: PMPro license type (for example, Standard, Plus, or Builder). */
 			return new WP_Error( 'pmpro_addon_license_required', sprintf( __( 'A valid PMPro %s license is required to update this Add On.', 'paid-memberships-pro' ), ucwords( $addon['License'] ) ) );
 		}
 
@@ -1002,6 +1004,7 @@ class PMPro_AddOns {
 
 					// show error
 					$msg = wp_kses(
+						/* translators: 1: PMPro license type (for example, Standard, Plus, or Builder), 2: PMPro license type repeated for add-on group. */
 						sprintf( __( 'You must have a <a target="_blank" href="https://www.paidmembershipspro.com/pricing/?utm_source=wp-admin&utm_pluginlink=bulkupdate">valid PMPro %1$s License Key</a> to update PMPro %2$s add ons. The following plugins will not be updated:', 'paid-memberships-pro' ), ucwords( $license_type ), ucwords( $license_type ) ),
 						array(
 							'a' => array(
@@ -1030,6 +1033,7 @@ class PMPro_AddOns {
 			if ( ! empty( $addon ) && pmpro_license_type_is_premium( $addon['License'] ) && ! $this->can_download_addon_with_license( $addon['License'] ) ) {
 				require_once ABSPATH . 'wp-admin/admin-header.php';
 
+				/* translators: 1: PMPro license type (for example, Standard, Plus, or Builder), 2: PMPro license type repeated for add-on group. */
 				$msg = sprintf(
 					__( 'You must have a <a href="https://www.paidmembershipspro.com/pricing/?utm_source=wp-admin&utm_pluginlink=addon_update">valid PMPro %1$s License Key</a> to update PMPro %2$s add ons.', 'paid-memberships-pro' ),
 					ucwords( $addon['License'] ),
@@ -1058,6 +1062,7 @@ class PMPro_AddOns {
 			$slug  = str_replace( '.php', '', basename( $plugin ) );
 			$addon = $this->get_addon_by_slug( $slug );
 			if ( ! empty( $addon ) && pmpro_license_type_is_premium( $addon['License'] ) && ! $this->can_download_addon_with_license( $addon['License'] ) ) {
+				/* translators: %s: PMPro license type (for example, Standard, Plus, or Builder). */
 				$msg = sprintf( __( 'You must enter a valid PMPro %s License Key in the PMPro Settings to update this Add On.', 'paid-memberships-pro' ), ucwords( $addon['License'] ) );
 				echo '<div class="error"><p>' . esc_html( $msg ) . '</p></div>';
 
@@ -1208,6 +1213,7 @@ class PMPro_AddOns {
 
 		if ( empty( $api->upgrade_notice ) && pmpro_license_type_is_premium( $addon['License'] ) ) {
 			if ( ! pmpro_license_isValid( null, $addon['License'] ) ) {
+				/* translators: %s: PMPro license type (for example, Standard, Plus, or Builder). */
 				$api->upgrade_notice = sprintf( __( 'Important: This plugin requires a valid PMPro %s license key to update.', 'paid-memberships-pro' ), ucwords( $addon['License'] ) );
 			}
 		}

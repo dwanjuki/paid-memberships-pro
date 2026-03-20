@@ -161,6 +161,7 @@ class PMPro_Email_Template_Checkout_Paid extends PMPro_Email_Template {
 
 		$membership_expiration = '';
 		if( ! empty( $membership_level->enddate ) ) {
+			/* translators: %s: Formatted date. */
 			$membership_expiration = "<p>" . sprintf(__("This membership will expire on %s.", 'paid-memberships-pro' ), date_i18n(get_option('date_format'), $membership_level->enddate)) . "</p>\n";
 		}
 

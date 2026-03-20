@@ -82,6 +82,7 @@ class PMPro_Admin_Activity_Email extends PMProEmail {
 						<td valign="top" style="font-family:Helvetica,Arial,sans-serif;font-size:16px;line-height:25px;color:#222222;padding:30px;text-align:left;">
 							<p style="font-size:20px;line-height:30px;margin:0px;padding:0px;">
 								<a href="<?php echo esc_url( site_url() ); ?>" target="_blank" style="color:#0C3D54;font-weight:bold;">[<?php echo esc_html( get_bloginfo( 'name' ) ); ?>]</a><br />
+								<?php /* translators: %s: Time period label (for example, today, this week, or this month). */ ?>
 								<?php printf( esc_html__( "Here's a summary of what happened in your Paid Memberships Pro site %s.", 'paid-memberships-pro' ), esc_html( $term ) ); ?>
 							</p>
 						</td>
@@ -102,6 +103,7 @@ class PMPro_Admin_Activity_Email extends PMProEmail {
 							if ( $revenue > 0 ) {
 								?>
 								<h3 style="color:#0C3D54;font-size:20px;line-height:30px;margin:0px 0px 15px 0px;padding:0px;"><?php esc_html_e( 'Sales and Revenue', 'paid-memberships-pro' ); ?></h3>
+								<?php /* translators: 1: Formatted monetary amount, 2: Time period label (for example, today, this week, or this month). */ ?>
 								<p style="margin:0px 0px 15px 0px;padding:0px;"><?php printf( wp_kses_post( __( 'Your membership site made <strong>%1$s</strong> in revenue %2$s.', 'paid-memberships-pro' ) ), pmpro_escape_price( pmpro_formatPrice( $revenue ) ), esc_html( $term ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
 							<?php } else { ?>
 								<h3 style="color:#0C3D54;font-size:20px;line-height:30px;margin:0px 0px 15px 0px;padding:0px;"><?php esc_html_e( 'Signups and Cancellations', 'paid-memberships-pro' ); ?></h3>
@@ -149,6 +151,7 @@ class PMPro_Admin_Activity_Email extends PMProEmail {
 
 							$num_levels_to_show = 5;
 							if ( count( $members_per_level ) > $num_levels_to_show ) {
+								/* translators: %s: Number of levels to display. */
 								echo( '<p>' . sprintf( esc_html__( 'Here is a summary of your top %d most popular levels:', 'paid-memberships-pro' ), esc_html( $num_levels_to_show ) ) . '</p>' );
 							}
 							?>
@@ -204,6 +207,7 @@ class PMPro_Admin_Activity_Email extends PMProEmail {
 									<p style="margin:0px 0px 15px 0px;padding:0px;">
 									<?php
 										if ( $num_orders_with_discount_code == 1 ) {
+											/* translators: 1: First link URL or anchor attributes, 2: Second link URL or anchor attributes. */
 											printf( wp_kses_post( __( '<strong>%1$d order</strong> used a <a %2$s>Discount Code</a> at checkout:', 'paid-memberships-pro' ) ), esc_html( number_format_i18n( $num_orders_with_discount_code ) ), 'style="color:#0C3D54;" target="_blank" href="' . esc_url( admin_url( 'admin.php?page=pmpro-discountcodes' ) ) . '"' );
 										} else {
 											printf( wp_kses_post( __( '<strong>%1$d orders</strong> used a <a %2$s>Discount Code</a> at checkout. Here is a breakdown of your most used codes:', 'paid-memberships-pro' ) ), esc_html( number_format_i18n( $num_orders_with_discount_code ) ), 'style="color:#0C3D54;" target="_blank" href="' . esc_url( admin_url( 'admin.php?page=pmpro-discountcodes' ) ) . '"' );
@@ -323,6 +327,7 @@ class PMPro_Admin_Activity_Email extends PMProEmail {
 								?>
 							<hr style="background-color:#F5F8FA;border:0;height:4px;margin:30px 0px 30px 0px;" />
 							<h3 style="color:#0C3D54;font-size:20px;line-height:30px;margin:0px 0px 15px 0px;padding:0px;"><?php esc_html_e( 'Premium License Status: None', 'paid-memberships-pro' ); ?></h3>
+							<?php /* translators: %s: URL to the PMPro license settings page. */ ?>
 							<p style="margin:0px;padding:0px;"><?php printf( wp_kses_post( __( '...and that is perfectly OK! PMPro is free to use for as long as you want for membership sites of all sizes. Interested in unlimited support, access to over 70 featured-enhancing Add Ons and instant installs and updates? <a %s>Check out our paid plans to learn more</a>.', 'paid-memberships-pro' ) ), ' style="color:#0C3D54;" href="https://www.paidmembershipspro.com/pricing/?utm_source=plugin&utm_medium=pmpro-admin-activity-email&utm_campaign=pricing&utm_content=license-section" target="_blank"' ); ?></p>
 								<?php
 							}
@@ -427,6 +432,7 @@ class PMPro_Admin_Activity_Email extends PMProEmail {
 		}
 		$this->email = $recipient;
 
+		/* translators: 1: Site name, 2: Report term (for example, monthly), 3: Date range label. */
 		$this->subject  = sprintf( __( '[%1$s] PMPro Activity for %2$s: %3$s', 'paid-memberships-pro' ), get_bloginfo( 'name' ), ucwords( $term ), $date_range );
 		$this->template = 'admin_activity_email';
 		$this->body     = $admin_activity_email_body;

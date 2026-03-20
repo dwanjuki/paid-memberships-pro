@@ -283,6 +283,7 @@ if (!empty($page_msg)) { ?>
 									),
 									'code' => array(),
 								);
+								/* translators: 1: Opening anchor tag attributes including the link URL, 2: Closing anchor tag. */
 								echo sprintf(wp_kses(__('Use the placeholder variable <code>%1$s</code> in your checkout <a href="%2$s" title="Edit Membership Email Templates">email templates</a> to include this information.', 'paid-memberships-pro'), $allowed_confirmation_in_email_html), '!!membership_level_confirmation_message!!', esc_url(add_query_arg('page', 'pmpro-emailtemplates', admin_url('admin.php'))));
 								?>
 							</p>
@@ -348,6 +349,7 @@ if (!empty($page_msg)) { ?>
 			);
 			echo '<p>' . wp_kses(__('Set the member pricing for this level. The initial payment is collected immediately at checkout. Recurring payments, if applicable, begin one cycle after the initial payment. Changing the level price only applies to new members and does not affect existing members of this level.', 'paid-memberships-pro'), $allowed_sd_html) . '</p>';
 			if (!function_exists('pmprosd_pmpro_membership_level_after_other_settings')) {
+								/* translators: %s: URL to the Subscription Delays Add On page. */
 				echo '<p>' . sprintf(wp_kses(__('Optional: Allow more customizable trial periods and renewal dates using the <a href="%s" title="Paid Memberships Pro - Subscription Delays Add On" target="_blank" rel="nofollow noopener">Subscription Delays Add On</a>.', 'paid-memberships-pro'), $allowed_sd_html), 'https://www.paidmembershipspro.com/add-ons/subscription-delays/?utm_source=plugin&utm_medium=pmpro-membershiplevels&utm_campaign=add-ons&utm_content=subscription-delays') . '</p>';
 			}
 			?>
@@ -422,6 +424,7 @@ if (!empty($page_msg)) { ?>
 							$has_bt_plan = PMProGateway_braintree::checkLevelForPlan($level->id);
 						?>
 							<p class="pmpro_message <?php if (!$has_bt_plan) { ?>pmpro_error<?php } ?>">
+								<?php /* translators: %s: Gateway label. */ ?>
 								<strong><?php esc_html_e('Note', 'paid-memberships-pro'); ?>:</strong> <?php echo esc_html(sprintf(__('You will need to create a "Plan" in your Braintree dashboard with the same settings and the "Plan ID" set to %s.', 'paid-memberships-pro'), PMProGateway_braintree::get_plan_id($level->id))); ?>
 							</p>
 						<?php } ?>
@@ -527,6 +530,7 @@ if (!empty($page_msg)) { ?>
 							'href' => array(),
 						),
 					);
+										/* translators: %s: URL to a PMPro article about recurring billing and expiration dates. */
 					echo wp_kses( sprintf( __('WARNING: This level is set with both a recurring billing amount and an expiration date. You only need to set one of these unless you really want this membership to expire after a certain number of payments. For more information, <a target="_blank" rel="nofollow noopener" href="%s">see our post here</a>.', 'paid-memberships-pro'), 'https://www.paidmembershipspro.com/membership-level-recurring-billing-and-expiration-date/?utm_source=plugin&utm_medium=pmpro-membershiplevels&utm_campaign=blog&utm_content=important-notes-on-recurring-billing-and-expiration-dates-for-membership-levels'), $allowed_html );
 				?></p>
 			</div>
@@ -564,6 +568,7 @@ if (!empty($page_msg)) { ?>
 								'rel' => array(),
 							),
 						);
+												/* translators: %s: URL to the Set Expiration Date Add On page. */
 						echo '<tr><th>&nbsp;</th><td><p class="description">' . sprintf(wp_kses(__('Optional: Allow more customizable expiration dates using the <a href="%s" title="Paid Memberships Pro - Set Expiration Date Add On" target="_blank" rel="nofollow noopener">Set Expiration Date Add On</a>.', 'paid-memberships-pro'), $allowed_sed_html), 'https://www.paidmembershipspro.com/add-ons/pmpro-expiration-date/?utm_source=plugin&utm_medium=pmpro-membershiplevels&utm_campaign=add-ons&utm_content=pmpro-expiration-date') . '</p></td></tr>';
 					} ?>
 					<tr class="expiration_info" <?php if (!pmpro_isLevelExpiring($level)) { ?>style="display: none;" <?php } ?>>
@@ -636,6 +641,7 @@ if (!empty($page_msg)) { ?>
 				),
 			);
 			?>
+			<?php /* translators: %s: URL to the related documentation page. */ ?>
 			<p><?php echo wp_kses( sprintf( __('Protect access to posts, pages, and content sections with built-in PMPro features. If you want to protect more content types, <a href="%s" rel="nofollow noopener" target="_blank">read our documentation on restricting content</a>.', 'paid-memberships-pro'), 'https://www.paidmembershipspro.com/documentation/content-controls/?utm_source=plugin&utm_medium=pmpro-membershiplevels&utm_campaign=documentation&utm_content=pmpro-content-settings'), $allowed_html ); ?></p>
 			<table class="form-table">
 				<tbody>
@@ -676,13 +682,16 @@ if (!empty($page_msg)) { ?>
 								$showexcerpts = get_option("pmpro_showexcerpts");
 								if ($filterqueries == 1) {
 									// Show a message that posts in these categories are hidden.
+									/* translators: %s: URL to the related WordPress admin page. */
 									echo sprintf(wp_kses(__('Non-members will not see posts in these categories. You can <a href="%s" title="Advanced Settings" target="_blank">update this setting here</a>.', 'paid-memberships-pro'), $allowed_html), esc_url( admin_url('admin.php?page=pmpro-advancedsettings')));
 								} else {
 									if ($showexcerpts == 1) {
 										// Show a message that posts in these categories will show title and excerpt.
+										/* translators: %s: URL to the related WordPress admin page. */
 										echo sprintf(wp_kses(__('Non-members will see the title and excerpt for posts in these categories. You can <a href="%s" title="Advanced Settings" target="_blank">update this setting here</a>.', 'paid-memberships-pro'), $allowed_html), esc_url( admin_url('admin.php?page=pmpro-advancedsettings')));
 									} else {
 										// Show a message that posts in these categories will show only the title.
+										/* translators: %s: URL to the related WordPress admin page. */
 										echo sprintf(wp_kses(__('Non-members will see the title only for posts in these categories. You can <a href="%s" title="Advanced Settings" target="_blank">update this setting here</a>.', 'paid-memberships-pro'), $allowed_html), esc_url( admin_url('admin.php?page=pmpro-advancedsettings')));
 									}
 								}
@@ -693,18 +702,21 @@ if (!empty($page_msg)) { ?>
 					<tr class="membership_posts">
 						<th scope="row" valign="top"><label><?php esc_html_e('Single Posts', 'paid-memberships-pro'); ?></label></th>
 						<td>
+							<?php /* translators: 1: Opening anchor tag attributes including the link URL, 2: Closing anchor tag. */ ?>
 							<p><?php echo sprintf(wp_kses(__('<a target="_blank" href="%1$s">Add</a> or <a target="_blank" href="%2$s">edit</a> a single post to protect it.', 'paid-memberships-pro'), $allowed_html), esc_url(admin_url('post-new.php')), esc_url(admin_url('edit.php'))); ?></p>
 						</td>
 					</tr>
 					<tr class="membership_posts">
 						<th scope="row" valign="top"><label><?php esc_html_e('Single Pages', 'paid-memberships-pro'); ?></label></th>
 						<td>
+							<?php /* translators: 1: Opening anchor tag attributes including the link URL, 2: Closing anchor tag. */ ?>
 							<p><?php echo sprintf(wp_kses(__('<a target="_blank" href="%1$s">Add</a> or <a target="_blank" href="%2$s">edit</a> a single page to protect it.', 'paid-memberships-pro'), $allowed_html), esc_url(add_query_arg(array('post_type' => 'page'), admin_url('post-new.php'))), esc_url(add_query_arg(array('post_type' => 'page'), admin_url('edit.php')))); ?></p>
 						</td>
 					</tr>
 					<tr class="membership_posts">
 						<th scope="row" valign="top"><label><?php esc_html_e('Other Content Types', 'paid-memberships-pro'); ?></label></th>
 						<td>
+							<?php /* translators: %s: URL to the related documentation page. */ ?>
 							<p><?php echo sprintf(wp_kses(__('Protect access to other content including custom post types (CPTs), courses, events, products, communities, podcasts, and more. <a href="%s" rel="nofollow noopener" target="_blank">Read our documentation on restricting content</a>.', 'paid-memberships-pro'), $allowed_html), 'https://www.paidmembershipspro.com/restrict-access-wordpress/?utm_source=plugin&utm_medium=pmpro-membershiplevels&utm_campaign=blog&utm_content=pmpro-content-settings'); ?></p>
 						</td>
 				</tbody>

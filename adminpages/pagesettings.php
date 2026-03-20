@@ -147,9 +147,11 @@ if (!empty($_REQUEST['createpages'])) {
 				pmpro_setOption( $page_name . '_page_id', $old_page->ID );
 				pmpro_setOption( $page_name . '_page_generated', '1' );
 				$msg = true;
+				/* translators: %s: Error message text from the gateway or API. */
 				$msgt = sprintf( __( "Found an existing version of the %s page and used that one.", 'paid-memberships-pro' ), $page_name );
 			} else {
 				$msg = -1;
+				/* translators: %s: Error message text from the gateway or API. */
 				$msgt = sprintf( __( "Error generating the %s page. You will have to choose or create one manually.", 'paid-memberships-pro' ), $page_name );
 			}
 		} else {
@@ -388,6 +390,7 @@ require_once(dirname(__FILE__) . "/admin_header.php"); ?>
 									'title' => array(),
 								),
 							);
+							/* translators: %s: URL to the Levels page. */
 							echo '<p class="description">' . sprintf( wp_kses( __( 'Optional: Customize your Membership Levels page using the <a href="%s" title="Paid Memberships Pro - Advanced Levels Page Add On" target="_blank">Advanced Levels Page Add On</a>.', 'paid-memberships-pro' ), $allowed_advanced_levels_html ), 'https://www.paidmembershipspro.com/add-ons/pmpro-advanced-levels-shortcode/?utm_source=plugin&utm_medium=pmpro-pagesettings&utm_campaign=add-ons&utm_content=pmpro-advanced-levels-shortcode' ) . '</p>';
 							} ?>
 						</td>
@@ -418,6 +421,7 @@ require_once(dirname(__FILE__) . "/admin_header.php"); ?>
 								&nbsp;
 								<a href="<?php echo esc_url( wp_nonce_url( add_query_arg( array( 'page' => 'pmpro-pagesettings', 'createpages' => 1, 'page_name' => esc_attr( 'login' ) ), admin_url('admin.php') ) ), 'createpages', 'pmpro_pagesettings_nonce' ); ?>"><?php esc_html_e('Generate Page', 'paid-memberships-pro' ); ?></a>
 							<?php } ?>
+							<?php /* translators: %s: Context-specific formatted value for this message. */ ?>
 							<p class="description"><?php printf( esc_html__('Include the shortcode %s or the Log In Form block.', 'paid-memberships-pro' ), '[pmpro_login]' ); ?></p>
 						</td>
 					</tr>
@@ -447,6 +451,7 @@ require_once(dirname(__FILE__) . "/admin_header.php"); ?>
 								&nbsp;
 								<a href="<?php echo esc_url( wp_nonce_url( add_query_arg( array( 'page' => 'pmpro-pagesettings', 'createpages' => 1, 'page_name' => esc_attr( 'member_profile_edit' )   ), admin_url('admin.php') ), 'createpages', 'pmpro_pagesettings_nonce' ) ); ?>"><?php esc_html_e('Generate Page', 'paid-memberships-pro' ); ?></a>
 							<?php } ?>
+							<?php /* translators: %s: File name or file-related value. */ ?>
 							<p class="description"><?php printf( esc_html__('Include the shortcode %s or the Member Profile Edit block.', 'paid-memberships-pro' ), '[pmpro_member_profile_edit]' ); ?></p>
 						</td>
 					</tr>

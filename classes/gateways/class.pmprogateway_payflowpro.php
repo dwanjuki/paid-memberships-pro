@@ -157,6 +157,7 @@
 							'title' => array(),
 						),
 					);
+						/* translators: %s: URL to the Payflow Recurring Orders Add On page. */
 					echo sprintf( wp_kses( __( 'Payflow does not use IPN. To sync recurring subscriptions, please see the <a target="_blank" href="%s" title="the Payflow Recurring Orders Add On">Payflow Recurring Orders Add On</a>.', 'paid-memberships-pro' ), $allowed_message_html ), 'https://www.paidmembershipspro.com/add-ons/payflow-recurring-orders-addon/?utm_source=plugin&utm_medium=pmpro-paymentsettings&utm_campaign=add-ons&utm_content=payflow-recurring-orders-addon' );
 				?>
 				</p>

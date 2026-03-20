@@ -71,6 +71,7 @@ function pmpro_report_sales_widget() {
 				<tr class="pmpro_report_tr">
 					<td>
 						<?php if( ! empty( $prices ) ) { ?>
+							<?php /* translators: %s: Formatted monetary amount. */ ?>
 							<button aria-label="<?php echo esc_attr( sprintf( __( 'Toggle orders by price for %s', 'paid-memberships-pro' ), $report_name ) ); ?>" class="pmpro_report_th pmpro_report_th_closed"><?php echo esc_html($report_name); ?></button>
 						<?php } else { ?>
 							<?php echo esc_html($report_name); ?>
@@ -89,6 +90,7 @@ function pmpro_report_sales_widget() {
 						}
 				?>
 					<tr class="pmpro_report_tr_sub" style="display: none;">
+						<?php /* translators: 1: Formatted monetary amount, 2: Time period label (for example, today, this week, or this month). */ ?>
 						<td aria-label="<?php echo esc_attr( sprintf( __( 'Orders %s at %s price', 'paid-memberships-pro' ), $report_name, pmpro_escape_price( pmpro_formatPrice( $price ) ) ) ); ?>">- <?php echo pmpro_escape_price( pmpro_formatPrice( $price ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></td>
 						<td><?php echo esc_html( number_format_i18n( $quantity['total'] ) ); ?></td>
 						<td><?php echo pmpro_escape_price( pmpro_formatPrice( $price * $quantity['total'] ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></td>
@@ -103,6 +105,7 @@ function pmpro_report_sales_widget() {
 	</table>
 	<?php if ( function_exists( 'pmpro_report_sales_page' ) ) { ?>
 		<p class="pmpro_report-button">
+			<?php /* translators: %s: URL to the related report page. */ ?>
 			<a class="button button-primary" href="<?php echo esc_url( admin_url( 'admin.php?page=pmpro-reports&report=sales' ) ); ?>" aria-label="<?php echo esc_attr( sprintf( __( 'View the full %s report', 'paid-memberships-pro' ), $pmpro_reports['sales'] ) ); ?>"><?php esc_html_e('Details', 'paid-memberships-pro' );?></a>
 		</p>
 	<?php } ?>
@@ -508,23 +511,28 @@ function pmpro_report_sales_page()
 		$google_chart_row_data[ $date ][ 'tooltip' ] .= '<ul style="margin-bottom: 0px;">';
 		// Maybe add renewal sales data.
 		if ( in_array( $new_renewals, array( 'only_renewals', 'new_renewals' ) ) ) {
+			/* translators: 1: Membership level name, 2: Membership level name, 3: Membership level name. */
 			$google_chart_row_data[ $date ][ 'tooltip' ] .= '<li><span style="margin-right: 3px;">' . sprintf( __( 'Renewals: %s', 'paid-memberships-pro' ), $type === 'sales' ? $data->renewals : pmpro_formatPrice( $data->renewals ) ) . '</li>';
 		}
 		// Maybe add new sales data.
 		if ( in_array( $new_renewals, array( 'only_new', 'new_renewals' ) ) ) {
+			/* translators: 1: Membership level name, 2: Membership level name, 3: Membership level name. */
 			$google_chart_row_data[ $date ][ 'tooltip' ] .= '<li><span style="margin-right: 3px;">' . sprintf( __( 'New: %s', 'paid-memberships-pro' ), $type === 'sales' ? $data->value - $data->renewals : pmpro_formatPrice( $data->value - $data->renewals ) ) . '</li>';
 		}
 		// Maybe add total sales data.
 		if ( $new_renewals === 'new_renewals' ) {
+			/* translators: 1: Membership level name, 2: Membership level name, 3: Membership level name. */
 			$google_chart_row_data[ $date ][ 'tooltip' ] .= '<li style="border-top: 1px solid #CCC; margin-bottom: 0px; margin-top: 8px; padding-top: 8px;">' . sprintf( __( 'Total: %s', 'paid-memberships-pro' ), $type === 'sales' ? $data->value : pmpro_formatPrice( $data->value ) ) . '</li>';
 		}
 		// Maybe add compare to previous period data.
 		if ( ! empty( $previous_period_dates ) ) {
 			if ( $new_renewals === 'new_renewals' ) {
+				/* translators: 1: Membership level name, 2: Membership level name, 3: Membership level name, 4: Membership level name. */
 				$google_chart_row_data[ $date ][ 'tooltip' ] .= '<li style="border-top: 1px solid #CCC; margin-bottom: 0px; margin-top: 8px; padding-top: 8px;">' . sprintf( __( 'Previous Year: %s', 'paid-memberships-pro' ), $type === 'sales' ? $data->compare_value : pmpro_formatPrice( $data->compare_value ) ) . '</li>';
 			} elseif ( $new_renewals === 'only_new') {
 				$google_chart_row_data[ $date ][ 'tooltip' ] .= '<li style="border-top: 1px solid #CCC; margin-bottom: 0px; margin-top: 8px; padding-top: 8px;">' . sprintf( __( 'Previous Year: %s', 'paid-memberships-pro' ), $type === 'sales' ? $data->compare_value - $data->compare_renewals : pmpro_formatPrice( $data->compare_value - $data->compare_renewals ) ) . '</li>';
 			} elseif ( $new_renewals === 'only_renewals') {
+				/* translators: %s: Membership level name. */
 				$google_chart_row_data[ $date ][ 'tooltip' ] .= '<li style="border-top: 1px solid #CCC; margin-bottom: 0px; margin-top: 8px; padding-top: 8px;">' . sprintf( __( 'Previous Year: %s', 'paid-memberships-pro' ), $type === 'sales' ? $data->compare_renewals : pmpro_formatPrice( $data->compare_renewals ) ) . '</li>';
 			}
 		}
@@ -543,6 +551,7 @@ function pmpro_report_sales_page()
 
 	// Renewal sales/revenue
 	if ( in_array( $new_renewals, array( 'only_renewals', 'new_renewals' ) ) ) {
+		/* translators: %s: Membership level name. */
 		$google_chart_column_labels[] = sprintf( __( 'Renewal %s', 'paid-memberships-pro' ), $type === 'sales' ? __( 'Signups', 'paid-memberships-pro' ) : __( 'Revenue', 'paid-memberships-pro' ) );
 		foreach ( $dates as $date => $data ) {
 			$google_chart_row_data[ $date ]['data'][] = (int) $data->renewals;
@@ -554,6 +563,7 @@ function pmpro_report_sales_page()
 
 	// New signups/revenue
 	if ( in_array( $new_renewals, array( 'only_new', 'new_renewals' ) ) ) {
+		/* translators: %s: Formatted monetary amount. */
 		$google_chart_column_labels[] = sprintf( __( 'New %s', 'paid-memberships-pro' ), $type === 'sales' ? __( 'Signups', 'paid-memberships-pro' ) : __( 'Revenue', 'paid-memberships-pro' ) );
 		foreach ( $dates as $date => $data ) {
 			$google_chart_row_data[ $date ]['data'][] = (int) ( $data->value - $data->renewals );
@@ -583,6 +593,7 @@ function pmpro_report_sales_page()
 	}
 
 	// Average sales/revenue in period
+	/* translators: %s: Formatted monetary amount. */
 	$google_chart_column_labels[] = sprintf( __( 'Average %s', 'paid-memberships-pro' ), $type === 'sales' ? __( 'Signups', 'paid-memberships-pro' ) : __( 'Revenue', 'paid-memberships-pro' ) );
 	$average = 0;
 	if ( 0 !== $units_in_period ) {

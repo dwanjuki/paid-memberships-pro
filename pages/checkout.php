@@ -100,6 +100,7 @@ if ( empty( $default_gateway ) ) {
 						<p class="<?php echo esc_attr( pmpro_get_element_class( 'pmpro_level_name_text' ) );?>">
 							<?php
 							// Tell the user which level they are signing up for.
+							/* translators: %s: Membership level name wrapped in strong tags. */
 							printf( esc_html__('You have selected the %s membership level.', 'paid-memberships-pro' ), '<strong>' . esc_html( $pmpro_level->name ) . '</strong>' );
 
 							// If a level will be removed with this purchase, let them know that too.
@@ -124,6 +125,7 @@ if ( empty( $default_gateway ) ) {
 										}
 
 										// If we made it this far, the user is going to lose this level after checkout.
+										/* translators: %s: Current membership level name wrapped in strong tags. */
 										printf( ' ' . esc_html__( 'Your current membership level of %s will be removed when you complete your purchase.', 'paid-memberships-pro' ), '<strong>' . esc_html( $level->name ) . '</strong>' );
 									}
 								}
@@ -151,6 +153,7 @@ if ( empty( $default_gateway ) ) {
 							<?php if($discount_code && pmpro_checkDiscountCode($discount_code)) { ?>
 								<?php
 									echo '<p class="' . esc_attr( pmpro_get_element_class( 'pmpro_level_discount_applied' ) ) . '">';
+									/* translators: %s: Discount code wrapped in span tags. */
 									echo sprintf( esc_html__( 'The %s code has been applied to your order.', 'paid-memberships-pro' ), '<span class="' . esc_attr( pmpro_get_element_class( "pmpro_tag pmpro_tag-discount-code", "pmpro_tag-discount-code" ) ) . '">' . esc_html( $discount_code ) . '</span>' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 									echo '</p> <!-- end pmpro_level_discount_applied -->';
 								?>
@@ -352,6 +355,7 @@ if ( empty( $default_gateway ) ) {
 											),
 											'strong' => array(),
 										);
+										/* translators: 1: Current user's login name, 2: URL to log out and switch accounts. */
 										echo wp_kses( sprintf( __('You are logged in as <strong>%s</strong>. If you would like to use a different account for this membership, <a href="%s">log out now</a>.', 'paid-memberships-pro' ), $current_user->user_login, wp_logout_url( esc_url_raw( $_SERVER['REQUEST_URI'] ) ) ), $allowed_html );
 									?>
 								</div> <!-- end pmpro_account_loggedin -->

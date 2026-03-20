@@ -130,6 +130,7 @@ if ( $saveid > 0 ) {
 }
 
 if( ! empty( $msgt ) && $ml_recurring && $ml_expiration ) {
+		/* translators: %s: URL to a PMPro article about recurring billing and expiration dates. */
 	$msgt .= ' <strong class="red">' . sprintf( __( 'WARNING: A level was set with both a recurring billing amount and an expiration date. You only need to set one of these unless you really want this membership to expire after a specific time period. For more information, <a target="_blank" rel="nofollow noopener" href="%s">see our post here</a>.', 'paid-memberships-pro' ), 'https://www.paidmembershipspro.com/important-notes-on-recurring-billing-and-expiration-dates-for-membership-levels/?utm_source=plugin&utm_medium=pmpro-membershiplevels&utm_campaign=blog&utm_content=important-notes-on-recurring-billing-and-expiration-dates-for-membership-levels' ) . '</strong>';
 
 	// turn success to errors

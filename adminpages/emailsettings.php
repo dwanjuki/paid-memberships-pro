@@ -121,6 +121,7 @@
 						</th>
 						<td>
 							<input type="checkbox" id="only_filter_pmpro_emails" name="only_filter_pmpro_emails" value="1" <?php if(!empty($only_filter_pmpro_emails)) { ?>checked="checked"<?php } ?> />
+							<?php /* translators: %s: Email address. */ ?>
 							<label for="only_filter_pmpro_emails"><?php printf( esc_html__('If unchecked, all emails from "WordPress &lt;%s&gt;" will be filtered to use the above settings.', 'paid-memberships-pro' ),  esc_html( $default_from_email ) );?></label>
 						</td>
 					</tr>
@@ -147,6 +148,7 @@
 						),
 						'em' => array(),
 					);
+					/* translators: 1: First link URL or anchor attributes, 2: Second link URL or anchor attributes. */
 					echo sprintf( wp_kses( __( 'If you are having issues with email delivery from your server, <a href="%s" title="Paid Memberships Pro - Subscription Delays Add On" target="_blank" rel="nofollow noopener">please read our email troubleshooting guide</a>. As an alternative, Paid Memberships Pro offers built-in integration for SendWP. <em>Optional: SendWP is a third-party service for transactional email in WordPress. <a href="%s" title="Documentation on SendWP and Paid Memberships Pro" target="_blank" rel="nofollow noopener">Click here to learn more about SendWP and Paid Memberships Pro</a></em>.', 'paid-memberships-pro' ), $allowed_email_troubleshooting_html ), 'https://www.paidmembershipspro.com/troubleshooting-email-issues-sending-sent-spam-delivery-delays/?utm_source=plugin&utm_medium=pmpro-emailsettings&utm_campaign=blog&utm_content=email-troubleshooting', 'https://www.paidmembershipspro.com/documentation/member-communications/email-delivery-sendwp/?utm_source=plugin&utm_medium=pmpro-emailsettings&utm_campaign=documentation&utm_content=sendwp' );
 				?></p>
 
@@ -164,6 +166,7 @@
 						
 						// Messages for connected or not.
 						$connected = esc_html__( 'Your site is connected to SendWP.', 'paid-memberships-pro' ) . " <a href='https://app.sendwp.com/dashboard/' target='_blank' rel='nofollow noopener'>" . __( 'View Your SendWP Account', 'paid-memberships-pro' ) . "</a>";
+						/* translators: %s: URL to the related WordPress admin page. */
 						$disconnected = ' ' . sprintf( esc_html__( 'Please enable email sending inside %s.', 'paid-memberships-pro' ), '<a href="' . esc_url( admin_url('tools.php?page=sendwp') ) . '">SendWP Settings</a>' );
 						?>
 						<p class="description" id="pmpro-sendwp-description"><?php echo wp_kses_post( $sendwp_email_forwarding ? $connected : $disconnected ); ?></p>

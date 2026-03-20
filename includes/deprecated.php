@@ -845,6 +845,7 @@ function pmpro_get_deprecated_add_ons() {
 
 	// If the RH restrict by username or email feature was being used, set the message.
 	if ( $pmpro_register_helper_restricting_by_email_or_username ) {
+		/* translators: %s: URL to the code recipe for restricting signup by email or username. */
 		$pmpro_register_helper_message = sprintf( __( 'Restricting members by username or email was not merged into Paid Memberships Pro. If this feature was being used, a <a href="%s" target="_blank">code recipe</a> will be needed to continue using this functionality.', 'paid-memberships-pro' ), 'https://www.paidmembershipspro.com/restrict-membership-signup-by-email-or-username/' );
 	} else {
 		$pmpro_register_helper_message = '';
@@ -1142,6 +1143,7 @@ function pmpro_was_loading_frontend_css_notice() {
 				<h3><?php esc_html_e( 'Custom Frontend Stylesheet Detected', 'paid-memberships-pro' ); ?></h3>
 				<p>
 					<?php
+					/* translators: %s: URL to the v3.1 release notes post. */
 					printf(
 						wp_kses_post(
 							__( 'Paid Memberships Pro detected that you were using a custom override for the frontend stylesheet. As of v3.1 and later, we no longer load your custom stylesheet. For more information, read our <a href="%s">v3.1 release notes post here</a>.', 'paid-memberships-pro' )

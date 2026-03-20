@@ -20,6 +20,7 @@ $subscription = $order->get_subscription();
 			<div class="pmpro_section_toggle">
 				<button class="pmpro_section-toggle-button" type="button" aria-expanded="true">
 					<span class="dashicons dashicons-arrow-up-alt2"></span>
+					<?php /* translators: %s: Order code (or order ID when no code exists). */ ?>
 					<?php printf( esc_html__( 'Order # %s', 'paid-memberships-pro' ), esc_html( $order->code ) ); ?>
 					<?php
 						if ( ! empty( $order->status ) ) {
@@ -229,6 +230,7 @@ $subscription = $order->get_subscription();
 									if ( ! empty( $subscription_period_end ) && $subscription_period_end !== $order_date ) {
 										?>
 										<p>
+											<?php /* translators: 1: Formatted date, 2: Formatted date. */ ?>
 											<?php echo esc_html( sprintf( __( '%1$s to %2$s', 'paid-memberships-pro' ), $order_date, $subscription_period_end ) ); ?>
 										</p>
 										<?php
@@ -378,7 +380,7 @@ $subscription = $order->get_subscription();
 					if ( $order->status === 'pending' && $order->payment_type === 'Check' ) {
 						$mark_paid_text = esc_html(
 							sprintf(
-								// translators: %s is the Order Code.
+								// translators: %s is the order code (or order ID when no code exists).
 								__( 'Mark the payment for order %s as received. The user and admin may receive an email confirmation after the order update is processed. Are you sure you want to mark this order as paid?', 'paid-memberships-pro' ),
 								str_replace( "'", '', $order->code )
 							)
@@ -398,6 +400,7 @@ $subscription = $order->get_subscription();
 							'pmpro_orders_nonce'
 						);
 						$order_actions['mark_order_paid'] = array(
+							/* translators: %s: URL for the linked destination. */
 							'title'   => esc_attr( sprintf( __( 'Mark order # %s as paid', 'paid-memberships-pro' ), esc_html( $order->code ) ) ),
 							'href'    => esc_js( 'javascript:pmpro_askfirst(' . wp_json_encode( $mark_paid_text ) . ', ' . wp_json_encode( $mark_paid_nonce_url ) . '); void(0);' ),
 							'class'   => 'button is-success pmpro-has-icon pmpro-has-icon-image-rotate',
@@ -406,6 +409,7 @@ $subscription = $order->get_subscription();
 					}
 
 					$order_actions['edit'] = array(
+						/* translators: %s: URL to the related WordPress admin page. */
 						'title'   => esc_attr( sprintf( __( 'Edit order # %s', 'paid-memberships-pro' ), esc_html( $order->code ) ) ),
 						'href'    => esc_url( add_query_arg( array( 'page' => 'pmpro-orders', 'id' => $order->id, 'edit' => 1 ), admin_url( 'admin.php' ) ) ),
 						'class'   => 'button button-secondary pmpro-has-icon pmpro-has-icon-edit',
@@ -413,6 +417,7 @@ $subscription = $order->get_subscription();
 					);
 
 					$order_actions['print'] = array(
+						/* translators: %s: URL to the related WordPress admin page. */
 						'title'   => esc_attr( sprintf( __( 'Print or save order # %s as PDF', 'paid-memberships-pro' ), esc_html( $order->code ) ) ),
 						'href'    => esc_url( add_query_arg( array( 'action' => 'pmpro_orders_print_view', 'id' => $order->id ), admin_url( 'admin-ajax.php' ) ) ),
 						'target'  => '_blank',
@@ -421,6 +426,7 @@ $subscription = $order->get_subscription();
 					);
 
 					$order_actions['email'] = array(
+						/* translators: %s: URL for the linked destination. */
 						'title'   => esc_attr( sprintf( __( 'Send order # %s via email', 'paid-memberships-pro' ), esc_html( $order->code ) ) ),
 						'href'    => '#TB_inline?width=600&height=200&inlineId=email_order',
 						'class'   => 'thickbox email_link button button-secondary pmpro-has-icon pmpro-has-icon-email',
@@ -429,6 +435,7 @@ $subscription = $order->get_subscription();
 					);
 
 					$order_actions['invoice'] = array(
+						/* translators: %s: URL for the linked destination. */
 						'title'   => esc_attr( sprintf( __( 'View order # %s as member', 'paid-memberships-pro' ), esc_html( $order->code ) ) ),
 						'href'    => esc_url( pmpro_url( 'invoice', '?invoice=' . $order->code ) ),
 						'target'  => '_blank',
@@ -454,7 +461,7 @@ $subscription = $order->get_subscription();
 						$order_actions['check_token_order'] = array(
 							'title'   => esc_attr(
 								sprintf(
-									/* translators: %s is the Order Code. */
+									/* translators: %s is the order code (or order ID when no code exists). */
 									__( 'Recheck payment status for order # %s', 'paid-memberships-pro' ),
 									$order->code
 								)
@@ -469,7 +476,7 @@ $subscription = $order->get_subscription();
 					if ( pmpro_allowed_refunds( $order ) ) {
 						$refund_text = esc_html(
 							sprintf(
-								// translators: %s is the Order Code.
+								// translators: %s is the order code (or order ID when no code exists).
 								__( 'Refund order %s at the payment gateway. This action is permanent. The user and admin will receive an email confirmation after the refund is processed. Are you sure you want to refund this order?', 'paid-memberships-pro' ),
 								str_replace( "'", '', $order->code )
 							)
@@ -488,6 +495,7 @@ $subscription = $order->get_subscription();
 							'pmpro_orders_nonce'
 						);
 						$order_actions['refund'] = array(
+							/* translators: %s: URL for the linked destination. */
 							'title'   => esc_attr( sprintf( __( 'Refund order # %s', 'paid-memberships-pro' ), esc_html( $order->code ) ) ),
 							'href'    => esc_js( 'javascript:pmpro_askfirst(' . wp_json_encode( $refund_text ) . ', ' . wp_json_encode( $refund_nonce_url ) . '); void(0);' ),
 							'class'   => 'button button-secondary pmpro-has-icon pmpro-has-icon-image-rotate',
@@ -498,7 +506,7 @@ $subscription = $order->get_subscription();
 					// Add the "Delete" button.
 					$delete_text = esc_html(
 						sprintf(
-							// translators: %s is the Order Code.
+							// translators: %s is the order code (or order ID when no code exists).
 							__( 'Deleting orders is permanent and can affect active users. Are you sure you want to delete order %s?', 'paid-memberships-pro' ),
 							str_replace( "'", '', $order->code )
 						)
@@ -516,6 +524,7 @@ $subscription = $order->get_subscription();
 						'pmpro_orders_nonce'
 					);
 					$order_actions['delete'] = array(
+						/* translators: %s: URL for the linked destination. */
 						'title'   => esc_attr( sprintf( __( 'Delete order # %s', 'paid-memberships-pro' ), esc_html( $order->code ) ) ),
 						'href'    => esc_js( 'javascript:pmpro_askfirst(' . wp_json_encode( $delete_text ) . ', ' . wp_json_encode( $delete_nonce_url ) . '); void(0);' ),
 						'class'   => 'button is-destructive pmpro-has-icon pmpro-has-icon-trash',

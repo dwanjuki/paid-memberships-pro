@@ -85,6 +85,7 @@ function pmpro_dashboard_quick_links_callback() {
 		$quick_lnks[] = array(
 			'href'        => add_query_arg( array( 'page' => 'pmpro-addons#' . $add_ons_type ), admin_url( 'admin.php' ) ),
 			'title'       => __( 'View Add Ons', 'paid-memberships-pro' ),
+			/* translators: %s: Context-specific formatted value for this message. */
 			'description' => sprintf( __( 'Explore available %s Add Ons for your membership site.', 'paid-memberships-pro' ), esc_html( $add_ons_type ) ),
 			'icon'        => 'download',
 		);

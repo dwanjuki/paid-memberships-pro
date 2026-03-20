@@ -88,6 +88,7 @@ function pmpro_member_edit_display() {
 		<?php		
 		if ( ! empty( $user->ID ) ) {
 			echo get_avatar( $user->ID, 96 );
+			/* translators: %s: User name. */
 			echo wp_kses_post( sprintf( esc_html__( 'Edit Member: %s', 'paid-memberships-pro' ), '<strong>' . $user->display_name . '</strong>' ) );
 		} else {
 			echo esc_html_e( 'Add Member', 'paid-memberships-pro' );

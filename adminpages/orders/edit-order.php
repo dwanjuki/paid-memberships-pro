@@ -2,6 +2,7 @@
 
 // Show the edit order form if an order ID is provided.
 if ( ! empty( $order->id ) ) { ?>
+	<?php /* translators: %s: Order code (or order ID when no code exists). */ ?>
 	<h1 class="wp-heading-inline"><?php printf( esc_html__( 'Edit Order # %s', 'paid-memberships-pro' ), esc_html( $order->code ) ); ?></h1>
 <?php } else { ?>
 	<h1 class="wp-heading-inline"><?php esc_html_e( 'New Order', 'paid-memberships-pro' ); ?></h1>
@@ -74,6 +75,7 @@ if ( ! empty( $order->id ) ) { ?>
 								// If the current membership level is not in the list, add it as "ID {membership_id} [deleted]".
 								if ( ! empty( $membership_id ) && ! in_array( $membership_id, wp_list_pluck( $levels, 'id' ) ) ) {
 									?>
+									<?php /* translators: %s: Numeric ID. */ ?>
 									<option value="<?php echo esc_attr( $membership_id ); ?>" selected><?php echo esc_html( sprintf( __( 'ID %d [deleted]', 'paid-memberships-pro' ), $membership_id ) ); ?></option>
 									<?php
 								}

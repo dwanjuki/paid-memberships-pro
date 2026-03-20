@@ -48,6 +48,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 
                         $pmpro_braintree_error = true;
                         $msg                   = - 1;
+                        /* translators: %s: Gateway label. */
                         $msgt                  = sprintf( esc_html__( 'Attempting to load Braintree gateway: %s', 'paid-memberships-pro' ), $exception->getMessage() );
                     return false;
                 }
@@ -70,6 +71,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 			if ( version_compare( PHP_VERSION, '5.4.45', '<' )) {
 
 				$msg = -1;
+				/* translators: %s: PHP version. */
 				$msgt = sprintf(esc_html__("The Braintree Gateway requires PHP 5.4.45 or greater. We recommend upgrading to PHP %s or greater. Ask your host to upgrade.", "paid-memberships-pro" ), PMPRO_MIN_PHP_VERSION );
 
 				pmpro_setMessage( $msgt, "pmpro_error" );
@@ -84,6 +86,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 				    if ( false == $pmpro_braintree_error ) {
 					    $pmpro_braintree_error = true;
 					    $msg                   = - 1;
+					    /* translators: 1: Gateway label, 2: Gateway label. */
 					    $msgt                  = sprintf( esc_html__( "The %s gateway depends on the %s PHP extension. Please enable it, or ask your hosting provider to enable it.", 'paid-memberships-pro' ), 'Braintree', $module );
 				    }
 
@@ -148,6 +151,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 					    $status = $exception->getMessage();
 
 					    if ( !empty( $status)) {
+						    /* translators: %s: Error message text from the gateway or API. */
 						    $msgt = sprintf( esc_html__( "Problem loading plans: %s", "paid-memberships-pro" ), $status );
 					    } else {
 					        $msgt = esc_html__( "Problem accessing the Braintree Gateway. Please verify your PMPro Payment Settings (Keys, etc).", "paid-memberships-pro");
@@ -776,6 +780,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 								//update
 								$response = Braintree_Customer::update($customer_id, $update_array);
                             } catch ( Exception $exception ) {
+								/* translators: %s: Error message returned by Braintree. */
 								$order->error = sprintf( esc_html__("Failed to update customer: %s", 'paid-memberships-pro' ), $exception->getMessage() );
 								$order->shorterror = $order->error;
 								return false;
@@ -963,6 +968,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 			}
 			else
 			{
+				/* translators: %s: Error message text from the gateway or API. */
 				$order->error = sprintf( esc_html__("Failed to subscribe with Braintree: %s", 'paid-memberships-pro' ),  $result->message );
 				$order->shorterror = $result->message;
 				return false;
@@ -1034,6 +1040,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 				}
 				catch(Exception $e)
 				{
+					/* translators: %s: Error message text from the gateway or API. */
 					$order->error = sprintf( esc_html__("Could not find the subscription. %s", 'paid-memberships-pro' ),  $e->getMessage() );
 					$order->shorterror = $order->error;
 					return false;	//no subscription found
@@ -1045,6 +1052,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 				}
 				else
 				{
+					/* translators: %s: Error message text from the gateway or API. */
 					$order->error = sprintf( esc_html__("Could not find the subscription. %s", 'paid-memberships-pro' ), $result->message );
 					$order->shorterror = $order->error;
 					return false;	//no subscription found

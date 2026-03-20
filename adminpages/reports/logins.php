@@ -70,6 +70,7 @@ function pmpro_report_login_widget() {
 	</table>
 	<?php if ( function_exists( 'pmpro_report_login_page' ) ) { ?>
 		<p class="pmpro_report-button">
+			<?php /* translators: %s: URL to the related report page. */ ?>
 			<a class="button button-primary" href="<?php echo esc_url( admin_url( 'admin.php?page=pmpro-reports&report=login' ) ); ?>" aria-label="<?php echo esc_attr( sprintf( __( 'View the full %s report', 'paid-memberships-pro' ), $pmpro_reports['login'] ) ); ?>"><?php esc_html_e('Details', 'paid-memberships-pro' );?></a>
 		</p>
 	<?php } ?>	

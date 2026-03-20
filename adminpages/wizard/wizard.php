@@ -49,6 +49,7 @@ if ( empty( $_REQUEST['step'] ) ) {
 										<?php echo esc_html( $count ); ?>
 									</span>
 								</div>
+								<?php /* translators: %s: Page or step label. */ ?>
 								<span class="pmpro-stepper__step-label"<?php echo ( in_array( 'is-active', $classes ) ) ? ' aria-label="' . sprintf( esc_html__( '%s Active Step', 'paid-memberships-pro' ), esc_html( $name ) ) . '"' : ''; ?>>
 									<?php echo esc_html( $name ); ?>
 								</span>

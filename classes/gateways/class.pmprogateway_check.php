@@ -115,6 +115,7 @@
 		<tr class="pmpro_settings_divider gateway gateway_check" <?php if($gateway != "check") { ?>style="display: none;"<?php } ?>>
 			<td colspan="2">
 				<hr />
+				<?php /* translators: %s: Gateway label. */ ?>
 				<h2><?php echo esc_html( sprintf( __( 'Pay by %s Settings', 'paid-memberships-pro' ), $check_gateway_label ) ); ?></h2>
 			</td>
 		</tr>
@@ -133,6 +134,7 @@
 			</th>
 			<td>
 				<textarea id="instructions" name="instructions" rows="3" cols="50" class="large-text"><?php echo esc_textarea( $values['instructions'] ); ?></textarea>
+				<?php /* translators: %s: Gateway label. */ ?>
 				<p class="description"><?php echo esc_html( sprintf( __( 'Instructions for members to follow to complete their purchase when paying with %s. Shown on the membership checkout, confirmation, and order pages.', 'paid-memberships-pro' ), $check_gateway_label ) );?></p>
 			</td>
 		</tr>
@@ -183,6 +185,7 @@
 								</th>
 								<td>
 									<textarea id="instructions" name="instructions" rows="3" cols="50" class="large-text"><?php echo wp_kses_post( wpautop(  $instructions ) ); ?></textarea>
+									<?php /* translators: %s: Gateway label. */ ?>
 									<p class="description"><?php echo esc_html( sprintf( __( 'Instructions for members to follow to complete their purchase when paying with %s. Shown on the membership checkout, confirmation, and order pages.', 'paid-memberships-pro' ), $check_gateway_label ) );?></p>
 								</td>
 							</tr>
@@ -264,6 +267,7 @@
 					<div class="<?php echo esc_attr( pmpro_get_element_class( 'pmpro_card' ) ); ?>">
 						<div class="<?php echo esc_attr( pmpro_get_element_class( 'pmpro_card_content' ) ); ?>">
 							<legend class="<?php echo esc_attr( pmpro_get_element_class( 'pmpro_form_legend' ) ); ?>">
+								<?php /* translators: %s: Gateway label. */ ?>
 								<h2 class="<?php echo esc_attr( pmpro_get_element_class( 'pmpro_form_heading pmpro_font-large' ) ); ?>"><?php echo esc_html( sprintf( __( 'Pay by %s', 'paid-memberships-pro' ), $check_gateway_label ) ); ?></h2>
 							</legend>
 							<div class="<?php echo esc_attr( pmpro_get_element_class( 'pmpro_form_fields' ) ); ?>">
@@ -293,6 +297,7 @@
 				<div id="pmpro_order_single-instructions">
 
 					<h3 class="<?php echo esc_attr( pmpro_get_element_class( 'pmpro_font-large' ) ); ?>">
+						<?php /* translators: %s: Context-specific formatted value for this message. */ ?>
 						<?php echo esc_html( sprintf( __ ( 'Payment Instructions: %s', 'paid-memberships-pro' ), $check_gateway_label ) ); ?>
 					</h3>
 

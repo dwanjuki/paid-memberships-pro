@@ -50,6 +50,7 @@
 	<div id="pmpro-admin-add-ons">
 		<h1 class="wp-heading-inline"><?php esc_html_e( 'Add Ons', 'paid-memberships-pro' ); ?></h1>
 		<p class="pmpro-admin-add-ons-refresh">
+			<?php /* translators: 1: Date when add-ons were last checked, 2: Time when add-ons were last checked. */ ?>
 			<?php echo esc_html( sprintf( __( 'Last checked on %1$s at %2$s.', 'paid-memberships-pro' ), date_i18n( get_option( 'date_format' ), $addons_timestamp ), date_i18n( get_option( 'time_format' ), $addons_timestamp ) ) ); ?> &nbsp;
 			<a class="button" href="<?php echo esc_url( admin_url( 'admin.php?page=pmpro-addons&force-check=1' ) ); ?>"><?php esc_html_e( 'Check Again', 'paid-memberships-pro' ); ?></a>
 		</p>
@@ -250,6 +251,7 @@
 											$author = '<a href="' . esc_url( $addon['AuthorURI'] ) . '" target="_blank">' . esc_html( $addon['Author'] ) . '</a>';
 										}
 										$plugin_meta[] = sprintf(
+												/* translators: %s: Add-on author name. */
 											esc_html__( 'By %s', 'paid-memberships-pro' ),
 											wp_kses( $author, $plugin_meta_allowed_html )
 										);
@@ -536,8 +538,10 @@
 			<span id="pmpro-popup-inner">
 				<a class="pmproPopupCloseButton" href="#" title="<?php esc_attr_e( 'Close Popup', 'paid-memberships-pro' ); ?>"><span class="dashicons dashicons-no"></span></a>
 				<a title="Paid Memberships Pro - Membership Plugin for WordPress" target="_blank" rel="noopener noreferrer" href="https://www.paidmembershipspro.com/pricing/?utm_source=plugin&utm_medium=pmpro-addons&utm_campaign=pricing&utm_content=pmpro-popup"><img src="<?php echo esc_url( PMPRO_URL . '/images/Paid-Memberships-Pro.png' ); ?>" width="350" height="75" border="0" alt="Paid Memberships Pro(c) - All Rights Reserved" /></a>
+				<?php /* translators: 1: Selected add-on name wrapped in strong tags, 2: Required license label wrapped in strong tags. */ ?>
 				<h1><?php printf( esc_html__( 'Get %1$s and more with a %2$s license.', 'paid-memberships-pro' ), '<strong id="addon-name"></strong>', '<strong id="addon-license"></strong>' ); ?></h1>
 				<p><a class="button button-primary button-hero" href="https://www.paidmembershipspro.com/pricing/?utm_source=plugin&utm_medium=pmpro-addons&utm_campaign=pricing&utm_content=pmpro-popup"><strong><?php esc_html_e( 'View Plans and Pricing', 'paid-memberships-pro' ); ?></strong></a></p>
+				<?php /* translators: %s: URL to the license settings page. */ ?>
 				<p><?php printf( wp_kses_post( __( 'Already purchased? <a href="%s">Enter your license key here</a>', 'paid-memberships-pro' ) ), esc_url( admin_url( 'admin.php?page=pmpro-license' ) ) ); ?></p>
 			</span>
 		</div>

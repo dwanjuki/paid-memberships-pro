@@ -296,6 +296,7 @@ if ($submit) {
 			pmpro_replaceUserMeta( $current_user->ID, $meta_keys, $meta_values );
 
             //message
+			/* translators: %s: URL to the account page. */
             $pmpro_msg = sprintf(__('Information updated. <a href="%s">&laquo; back to my account</a>', 'paid-memberships-pro' ), pmpro_url("account"));
             $pmpro_msgt = "pmpro_success";
 			

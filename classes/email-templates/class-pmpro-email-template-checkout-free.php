@@ -70,6 +70,7 @@ class PMPro_Email_Template_Checkout_Free extends PMPro_Email_Template {
 	 * @return string The email subject.
 	 */
 	public static function get_default_subject() {
+		/* translators: %s: Email address. */
 		return sprintf( esc_html__( 'Your membership confirmation for %s', 'paid-memberships-pro' ), get_option( 'blogname' ) );
 	}
 
@@ -165,6 +166,7 @@ class PMPro_Email_Template_Checkout_Free extends PMPro_Email_Template {
 
 		$membership_expiration = '';
 		if( ! empty( $membership_level->enddate ) ) {
+			/* translators: %s: Formatted date. */
 			$membership_expiration = "<p>" . sprintf(__("This membership will expire on %s.", 'paid-memberships-pro' ), date_i18n(get_option('date_format'), $membership_level->enddate)) . "</p>\n";
 		}
 

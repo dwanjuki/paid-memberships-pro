@@ -92,6 +92,7 @@ class PMPro_Widget_Member_Login extends WP_Widget {
 					'title' => array(),
 				),
 			);
+						/* translators: %s: URL to the Nav Menus Add On page. */
 			echo '<p class="description">' . sprintf( wp_kses( __( 'Customize this menu per level using the <a href="%s" title="Paid Memberships Pro - Nav Menus Add On" target="_blank">Nav Menus Add On</a>. Assign the menu under Appearance > Menus.', 'paid-memberships-pro' ), $allowed_nav_menus_link_html ), 'https://www.paidmembershipspro.com/add-ons/pmpro-nav-menus/?utm_source=plugin&utm_medium=pmpro-membershiplevels&utm_campaign=add-ons&utm_content=nav-menus' ) . '</p>';
 	}
 }

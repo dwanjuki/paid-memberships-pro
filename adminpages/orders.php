@@ -61,9 +61,11 @@ if ( $nonceokay ) {
 			if ( ! empty( $paid_order->id ) && $paid_order->payment_type === 'Check' ) {
 				$paid_order->status = 'success';
 				if ( $paid_order->saveOrder() ) {
+					/* translators: %s: Order code (or order ID when no code exists). */
 					$pmpro_msg  = sprintf( __( 'Payment for order # %s has been successfully marked as paid.', 'paid-memberships-pro' ), esc_html( $paid_order->code ) );
 					$pmpro_msgt = 'pmpro_success';
 				} else {
+					/* translators: %s: Order code (or order ID when no code exists). */
 					$pmpro_msg  = sprintf( __( 'Error updating status for order # %s.', 'paid-memberships-pro' ), esc_html( $paid_order->code ) );
 					$pmpro_msgt = 'pmpro_error';
 				}
@@ -176,6 +178,7 @@ require_once( dirname( __FILE__ ) . '/admin_header.php' ); ?>
 	$list_url   = add_query_arg( array( 'page' => 'pmpro-orders' ), admin_url( 'admin.php' ) );
 	$is_edit    = isset( $_REQUEST['edit'] ) && intval( $_REQUEST['edit'] ) === 1;
 	$is_new     = empty( $order->id );
+	/* translators: 1: First order code (or order ID), 2: Second order code (or order ID). */
 	$identifier = ! empty( $order->code ) ? sprintf( __( 'Order # %s', 'paid-memberships-pro' ), $order->code ) : sprintf( __( 'Order ID: %s', 'paid-memberships-pro' ), (int) $order->id );
 	$order_url  = $is_new ? '' : add_query_arg( array( 'page' => 'pmpro-orders', 'id' => (int) $order->id ), admin_url( 'admin.php' ) );
 
@@ -203,6 +206,7 @@ require_once( dirname( __FILE__ ) . '/admin_header.php' ); ?>
 			'label'   => $identifier,
 			'url'     => $order_url,
 			'current' => false,
+			/* translators: %s: Order code (or order ID when no code exists). */
 			'title'   => sprintf( __( 'View Order # %s', 'paid-memberships-pro' ), $identifier ),
 		);
 		$items[] = array(

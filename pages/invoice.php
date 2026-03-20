@@ -340,6 +340,7 @@
 											if ( ! empty( $subscription_period_end ) && $subscription_period_end !== $order_date ) {
 												?>
 												<p class="<?php echo esc_attr( pmpro_get_element_class( 'pmpro_font-small' ) ); ?>">
+													<?php /* translators: 1: Formatted date, 2: Formatted date. */ ?>
 													<?php echo esc_html( sprintf( __( '%1$s to %2$s', 'paid-memberships-pro' ), $order_date, $subscription_period_end ) ); ?>
 												</p>
 												<?php

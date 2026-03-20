@@ -276,6 +276,7 @@ function pmpro_membership_level_profile_fields($user)
 									?>
 									<label for="<?php echo esc_attr( $shown_level_name_prefix ); ?>[refund]" style="display: none">
 										<input type="checkbox" name="<?php echo esc_attr( $shown_level_name_prefix ); ?>[refund]" value="1" />
+										<?php /* translators: %s: Formatted monetary amount. */ ?>
 										<?php printf( esc_html__( 'Refund the last payment (%s).', 'paid-memberships-pro' ), pmpro_escape_price( $last_order->get_formatted_total() ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 									</label>
 									<?php
@@ -295,6 +296,7 @@ function pmpro_membership_level_profile_fields($user)
 									<div class="pmpro_admin">
 										<p class="pmpro_message pmpro_error">
 											<?php
+											/* translators: %s: Error message text from the gateway or API. */
 											printf( esc_html__( 'The user has an active subscription for the %s level. The subscription should be cancelled using the Member History tool below.', 'paid-memberships-pro' ), esc_html( $level->name ) );
 											?>
 										</p>
@@ -382,6 +384,7 @@ function pmpro_membership_level_profile_fields($user)
 													?>
 													<label for="<?php echo esc_attr( $name_prefix ); ?>[refund]" style="display: none">
 														<input type="checkbox" name="<?php echo esc_attr( $name_prefix ); ?>[refund]" value="1" />
+														<?php /* translators: %s: Formatted monetary amount. */ ?>
 														<?php printf( esc_html__( 'Refund the last payment (%s).', 'paid-memberships-pro' ), pmpro_escape_price( $last_order->get_formatted_total() ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 													</label>
 													<?php

@@ -147,15 +147,18 @@
 		PMProGateway_braintree::dependencies();
 	} elseif($gateway == "stripe" && version_compare( PHP_VERSION, '5.3.29', '<' ) ) {
         $msg = -1;
+		/* translators: %s: Recommended minimum PHP version. */
         $msgt = sprintf(__("The Stripe Gateway requires PHP 5.3.29 or greater. We recommend upgrading to PHP %s or greater. Ask your host to upgrade.", "paid-memberships-pro" ), PMPRO_MIN_PHP_VERSION );
     } elseif($gateway == "braintree" && version_compare( PHP_VERSION, '5.4.45', '<' ) ) {
         $msg = -1;
+		/* translators: %s: Recommended minimum PHP version. */
         $msgt = sprintf(__("The Braintree Gateway requires PHP 5.4.45 or greater. We recommend upgrading to PHP %s or greater. Ask your host to upgrade.", "paid-memberships-pro" ), PMPRO_MIN_PHP_VERSION );
     }
 
 	//if no errors yet, let's check and bug them if < our PMPRO_MIN_PHP_VERSION
 	if( empty($msgt) && version_compare( PHP_VERSION, PMPRO_MIN_PHP_VERSION, '<' ) ) {
 		$msg = 1;
+		/* translators: %s: Recommended minimum PHP version. */
 		$msgt = sprintf(__("We recommend upgrading to PHP %s or greater. Ask your host to upgrade.", "paid-memberships-pro" ), PMPRO_MIN_PHP_VERSION );
 	}
 

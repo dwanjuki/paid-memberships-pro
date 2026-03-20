@@ -171,6 +171,7 @@
 								'title' => array(),
 							),
 						);
+						/* translators: %s: URL to the related documentation page. */
 						echo sprintf( wp_kses( __( 'Note: the PayPal Standard gateway has been deprecated. Please switch to using <a href="%s" target="_blank">PayPal Express</a>.', 'paid-memberships-pro' ), $allowed_message_html ), 'https://www.paidmembershipspro.com/gateway/paypal-express/enable-express-checkout/?utm_source=plugin&utm_medium=pmpro-paymentsettings&utm_campaign=documentation&utm_content=enable-express-checkout' );
 					?>
 					</p>
@@ -947,6 +948,7 @@
 					// create email
 					$pmproemail = new PMProEmail();
 					$body = '<p>' . __( "There was a potential issue while setting the 'Profile Start Date' for a user's subscription at checkout. PayPal does not allow one to set a Profile Start Date further than 1 year out. Typically, this is not an issue, but sometimes a combination of custom code or add ons for PMPro (e.g. the Prorating or Auto-renewal Checkbox add ons) will try to set a Profile Start Date out past 1 year in order to respect an existing user's original expiration date before they checked out. The user's information is below. PMPro has allowed the checkout and simply restricted the Profile Start Date to 1 year out with a possible additional free Trial of up to 1 year. You should double check this information to determine if maybe the user has overpaid or otherwise needs to be addressed. If you get many of these emails, you should consider adjusting your custom code to avoid these situations.", 'paid-memberships-pro' ) . '</p>';
+					/* translators: 1-9: Order codes (or order IDs when no code exists) used in this notice. */
 					$body .= '<p>' . sprintf( __( 'User: %1$s<br />Email: %2$s<br />Membership Level: %3$s<br />Order #: %4$s<br />Original Profile Start Date: %5$s<br />Adjusted Profile Start Date: %6$s<br />Trial Period: %7$s<br />Trial Frequency: %8$s<br />', 'paid-memberships-pro' ), $order->user->user_nicename, $order->user->user_email, $level->name, $order->code, $original_start_date , $one_year_out_date, $trial_period, $trial_frequency ) . '</p>';
 					$pmproemail->template = 'profile_start_date_limit_check';
 					$pmproemail->subject = sprintf( __( 'Profile Start Date Issue Detected and Fixed at %s', 'paid-memberships-pro' ), get_bloginfo( 'name' ) );
@@ -999,8 +1001,8 @@
 
 			if("SUCCESS" == strtoupper($this->httpParsedResponseAr["ACK"]) || "SUCCESSWITHWARNING" == strtoupper($this->httpParsedResponseAr["ACK"])) {
 				// PayPal docs says that PROFILESTATUS can be:
-				// 1. ActiveProfile — The recurring payment profile has been successfully created and activated for scheduled payments according the billing instructions from the recurring payments profile.
-				// 2. PendingProfile — The system is in the process of creating the recurring payment profile. Please check your IPN messages for an update.
+				// 1. ActiveProfile Ã¢â‚¬â€ The recurring payment profile has been successfully created and activated for scheduled payments according the billing instructions from the recurring payments profile.
+				// 2. PendingProfile Ã¢â‚¬â€ The system is in the process of creating the recurring payment profile. Please check your IPN messages for an update.
 				// Also, we have seen that PROFILESTATUS can be missing. That case would be an error.
 				if(isset($this->httpParsedResponseAr["PROFILESTATUS"]) && in_array($this->httpParsedResponseAr["PROFILESTATUS"], array("ActiveProfile", "PendingProfile"))) {
 					$order->status = "success";

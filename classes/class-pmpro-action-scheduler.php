@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * Paid Memberships Pro — Action Scheduler (AS).
+ * Paid Memberships Pro ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Action Scheduler (AS).
  *
  * This class provides methods to schedule, manage, and execute tasks asynchronously, and is both a replacement
  * for older wp-cron based tasks and a more efficient and performant way to handle background and asynchronous tasks in WordPress.
@@ -816,6 +816,7 @@ class PMPro_Action_Scheduler {
 			);
 
 			if ( $table_exists !== $full_table_name ) {
+				/* translators: %s: Context-specific formatted value for this message. */
 				$issues[] = sprintf( __( 'Missing table: %s', 'paid-memberships-pro' ), $full_table_name );
 			}
 		}

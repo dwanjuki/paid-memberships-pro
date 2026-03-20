@@ -123,6 +123,7 @@ function pmpro_dashboard_welcome_callback() {
 
 				if ( $site_type_hub_link ) {
 					?>
+						<?php /* translators: %s: Context label shown in this section. */ ?>
 						<h3><?php printf( esc_html__( 'Use Case: %s', 'paid-memberships-pro' ), esc_html( $site_types[ $site_type ] ) ); ?></h3>
 						<p><?php printf( esc_html__( 'We designed the %s Hub&trade; as a complete resource to help you start, launch, and grow your membership site with Paid Memberships Pro.', 'paid-memberships-pro' ), esc_html( $site_types[ $site_type ] ) ); ?></p>
 						<p><a class="button button-primary button-hero" href="<?php echo esc_url( $site_type_hub_link ); ?>" target="_blank" rel="noopener noreferrer"><?php printf( esc_html__( 'Visit the %s Hub&trade;', 'paid-memberships-pro' ), esc_html( $site_types[ $site_type ] ) ); ?></a></p>

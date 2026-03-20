@@ -576,6 +576,7 @@ class PMProGateway_stripe extends PMProGateway {
 						),
 					);
 				?>
+				<?php /* translators: %s: URL to the related documentation page. */ ?>
 				<p class="description"><?php echo sprintf( wp_kses( __( 'Allow users to pay using Apple Pay, Google Pay, or Microsoft Pay depending on their browser. When enabled, your domain will automatically be registered with Apple and a domain association file will be hosted on your site. <a target="_blank" href="%s" title="More Information about the domain association file for Apple Pay">More Information</a>', 'paid-memberships-pro' ), $allowed_stripe_payment_button_html ), 'https://stripe.com/docs/stripe-js/elements/payment-request-button#verifying-your-domain-with-apple-pay' ); ?></p>
 					<?php
 					if ( ! empty( $values['stripe_payment_request_button'] ) ) {
@@ -589,6 +590,7 @@ class PMProGateway_stripe extends PMProGateway {
 							),
 						);
 						if ( empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === "off" ) {
+								/* translators: %s: URL to documentation for forcing WordPress to use HTTPS. */
 							$payment_request_error_escaped = sprintf( wp_kses( __( 'This webpage is being served over HTTP, but the Stripe Payment Request Button will only work on pages being served over HTTPS. To resolve this, you must <a target="_blank" href="%s" title="Configuring WordPress to Always Use HTTPS/SSL">set up WordPress to always use HTTPS</a>.', 'paid-memberships-pro' ), $allowed_payment_request_error_html ), 'https://www.paidmembershipspro.com/configuring-wordpress-always-use-httpsssl/?utm_source=plugin&utm_medium=pmpro-paymentsettings&utm_campaign=blog&utm_content=configure-https' );
 						} elseif ( ! $stripe->pmpro_does_apple_pay_domain_exist() ) {
 							$payment_request_error_escaped = sprintf( wp_kses( __( 'Your domain could not be registered with Apple to enable Apple Pay. Please try <a target="_blank" href="%s" title="Apple Pay Settings Page in Stripe">registering your domain manually from the Apple Pay settings page in Stripe</a>.', 'paid-memberships-pro' ), $allowed_payment_request_error_html ), 'https://dashboard.stripe.com/settings/payments/apple_pay' );
@@ -634,7 +636,8 @@ class PMProGateway_stripe extends PMProGateway {
 						),
 					);
 				?>
-				<p class="description"><?php echo sprintf( wp_kses( __( 'Stripe Tax is only available when using Stripe Checkout (the Stripe-hosted payment page). You must <a target="_blank" href="%1$s">activate Stripe Tax</a> in your Stripe dashboard. <a target="_blank" href="%2$s">More information about Stripe Tax »</a>', 'paid-memberships-pro' ), $allowed_stripe_tax_description_html ), 'https://dashboard.stripe.com/settings/tax/activate', 'https://stripe.com/tax' ); ?></p>
+				<?php /* translators: 1: Opening anchor tag attributes including the link URL, 2: Closing anchor tag. */ ?>
+				<p class="description"><?php echo sprintf( wp_kses( __( 'Stripe Tax is only available when using Stripe Checkout (the Stripe-hosted payment page). You must <a target="_blank" href="%1$s">activate Stripe Tax</a> in your Stripe dashboard. <a target="_blank" href="%2$s">More information about Stripe Tax Ã‚Â»</a>', 'paid-memberships-pro' ), $allowed_stripe_tax_description_html ), 'https://dashboard.stripe.com/settings/tax/activate', 'https://stripe.com/tax' ); ?></p>
 			</td>
 		</tr>
 		<tr class="gateway gateway_stripe gateway_stripe_checkout_fields" <?php if ( $gateway != "stripe"  ) { ?>style="display: none;"<?php } ?>>
@@ -661,6 +664,7 @@ class PMProGateway_stripe extends PMProGateway {
 				if ( $gateway != "stripe" ) {
 					echo ' style="display: none;"';
 				}
+						/* translators: %s: URL to the Add PayPal Express Add On page. */
 				echo '><th>&nbsp;</th><td><p class="description">' . sprintf( wp_kses( __( 'Optional: Offer PayPal Express as an option at checkout using the <a target="_blank" href="%s" title="Paid Memberships Pro - Add PayPal Express Option at Checkout Add On">Add PayPal Express Add On</a>.', 'paid-memberships-pro' ), $allowed_appe_html ), 'https://www.paidmembershipspro.com/add-ons/pmpro-add-paypal-express-option-checkout/?utm_source=plugin&utm_medium=pmpro-paymentsettings&utm_campaign=add-ons&utm_content=pmpro-add-paypal-express-option-checkout' ) . '</p></td></tr>';
 		}
 	}
@@ -931,6 +935,7 @@ class PMProGateway_stripe extends PMProGateway {
 										),
 									);
 								?>
+								<?php /* translators: %s: URL to the related documentation page. */ ?>
 								<p class="description"><?php echo sprintf( wp_kses( __( 'Allow users to pay using Apple Pay, Google Pay, or Microsoft Pay depending on their browser. When enabled, your domain will automatically be registered with Apple and a domain association file will be hosted on your site. <a target="_blank" href="%s" title="More Information about the domain association file for Apple Pay">More Information</a>', 'paid-memberships-pro' ), $allowed_stripe_payment_button_html ), 'https://stripe.com/docs/stripe-js/elements/payment-request-button#verifying-your-domain-with-apple-pay' ); ?></p>
 									<?php
 									if ( ! empty( $paymetn_request_button ) ) {
@@ -944,6 +949,7 @@ class PMProGateway_stripe extends PMProGateway {
 											),
 										);
 										if ( empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === "off" ) {
+																				/* translators: %s: URL to documentation for forcing WordPress to use HTTPS. */
 											$payment_request_error_escaped = sprintf( wp_kses( __( 'This webpage is being served over HTTP, but the Stripe Payment Request Button will only work on pages being served over HTTPS. To resolve this, you must <a target="_blank" href="%s" title="Configuring WordPress to Always Use HTTPS/SSL">set up WordPress to always use HTTPS</a>.', 'paid-memberships-pro' ), $allowed_payment_request_error_html ), 'https://www.paidmembershipspro.com/configuring-wordpress-always-use-httpsssl/?utm_source=plugin&utm_medium=pmpro-paymentsettings&utm_campaign=blog&utm_content=configure-https' );
 										} elseif ( ! $stripe->pmpro_does_apple_pay_domain_exist() ) {
 											$payment_request_error_escaped = sprintf( wp_kses( __( 'Your domain could not be registered with Apple to enable Apple Pay. Please try <a target="_blank" href="%s" title="Apple Pay Settings Page in Stripe">registering your domain manually from the Apple Pay settings page in Stripe</a>.', 'paid-memberships-pro' ), $allowed_payment_request_error_html ), 'https://dashboard.stripe.com/settings/payments/apple_pay' );
@@ -1003,7 +1009,8 @@ class PMProGateway_stripe extends PMProGateway {
 										),
 									);
 								?>
-								<p class="description"><?php echo sprintf( wp_kses( __( 'Stripe Tax is only available when using Stripe Checkout (the Stripe-hosted payment page). You must <a target="_blank" href="%1$s">activate Stripe Tax</a> in your Stripe dashboard. <a target="_blank" href="%2$s">More information about Stripe Tax »</a>', 'paid-memberships-pro' ), $allowed_stripe_tax_description_html ), 'https://dashboard.stripe.com/settings/tax/activate', 'https://stripe.com/tax' ); ?></p>
+								<?php /* translators: 1: Opening anchor tag attributes including the link URL, 2: Closing anchor tag. */ ?>
+								<p class="description"><?php echo sprintf( wp_kses( __( 'Stripe Tax is only available when using Stripe Checkout (the Stripe-hosted payment page). You must <a target="_blank" href="%1$s">activate Stripe Tax</a> in your Stripe dashboard. <a target="_blank" href="%2$s">More information about Stripe Tax Ã‚Â»</a>', 'paid-memberships-pro' ), $allowed_stripe_tax_description_html ), 'https://dashboard.stripe.com/settings/tax/activate', 'https://stripe.com/tax' ); ?></p>
 							</td>
 						</tr>
 						<tr class="gateway_stripe_checkout_fields">
@@ -1933,6 +1940,7 @@ class PMProGateway_stripe extends PMProGateway {
 
 			$pmpro_stripe_error = true;
 			$msg                = - 1;
+			/* translators: %s: PHP version. */
 			$msgt               = sprintf( __( "The Stripe Gateway requires PHP 5.3.29 or greater. We recommend upgrading to PHP %s or greater. Ask your host to upgrade.", "paid-memberships-pro" ), PMPRO_MIN_PHP_VERSION );
 
 			if ( ! is_admin() ) {
@@ -1948,6 +1956,7 @@ class PMProGateway_stripe extends PMProGateway {
 			if ( ! extension_loaded( $module ) ) {
 				$pmpro_stripe_error = true;
 				$msg                = - 1;
+				/* translators: 1: Gateway label, 2: Gateway label. */
 				$msgt               = sprintf( __( "The %s gateway depends on the %s PHP extension. Please enable it, or ask your hosting provider to enable it.", 'paid-memberships-pro' ), 'Stripe', $module );
 
 				//throw error on checkout page
@@ -2892,6 +2901,7 @@ class PMProGateway_stripe extends PMProGateway {
 							$stripe = new PMProGateway_stripe();
 							$application_fee_percentage = $stripe->get_application_fee_percentage();
 							if ( ! empty( $application_fee_percentage ) ) {
+								/* translators: %s: Context-specific formatted value for this message. */
 								echo sprintf( esc_html__( 'Note: You are using the free Stripe payment gateway integration. This includes an additional %s fee for payment processing. This fee is removed by activating a premium PMPro license.', 'paid-memberships-pro' ), intval( $application_fee_percentage ) . '%' );
 							} else {
 								esc_html_e( 'Note: You are using the free Stripe payment gateway integration. There is no additional fee for payment processing above what Stripe charges.', 'paid-memberships-pro' );
@@ -3041,6 +3051,7 @@ class PMProGateway_stripe extends PMProGateway {
 											} else {
 												$application_fee_percentage = $this->get_application_fee_percentage();
 												if ( ! empty( $application_fee_percentage ) ) {
+													/* translators: %s: Context-specific formatted value for this message. */
 													echo sprintf( esc_html__( 'Note: You are using the free Stripe payment gateway integration. This includes an additional %s fee for payment processing. This fee is removed by activating a premium PMPro license.', 'paid-memberships-pro' ), intval( $application_fee_percentage ) . '%' );
 												} else {
 													esc_html_e( 'Note: You are using the free Stripe payment gateway integration. There is no additional fee for payment processing above what Stripe charges.', 'paid-memberships-pro' );

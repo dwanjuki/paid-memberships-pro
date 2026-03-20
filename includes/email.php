@@ -362,6 +362,7 @@ function pmpro_email_templates_email_data($data, $email) {
 		}
 		if ( ! empty( $user->membership_level ) ) {
 			if ( ! empty( $user->membership_level->name ) ) {
+				/* translators: %s: Membership level name. */
 				$new_data["membership_change"] = sprintf(__("The new level is %s.", "paid-memberships-pro"), $user->membership_level->name);
 			}
 			if ( ! empty($user->membership_level->startdate) ) {
@@ -369,6 +370,7 @@ function pmpro_email_templates_email_data($data, $email) {
 			}
 			if ( ! empty($user->membership_level->enddate) ) {
 				$new_data['enddate'] = date_i18n( get_option( 'date_format' ), $user->membership_level->enddate );
+				/* translators: %s: Membership expiration date. */
 				$new_data['membership_expiration'] = "<p>" . sprintf( esc_html__("This membership will expire on %s.", "paid-memberships-pro"), date_i18n( get_option( 'date_format' ), $user->membership_level->enddate ) ) . "</p>\n";
 				$new_data["membership_change"] .= " " . sprintf(__("This membership will expire on %s.", "paid-memberships-pro"), date_i18n( get_option( 'date_format' ), $user->membership_level->enddate ) );
 			} else if ( ! empty( $email->expiration_changed ) ) {

@@ -115,16 +115,19 @@ $level_groups  = pmpro_get_level_groups_in_order();
 										</td>
 										<td>
 										<?php if ( ! $has_level ) { ?>                	
+											<?php /* translators: %s: Membership level name. */ ?>
 											<a aria-label="<?php echo esc_attr( sprintf( __('Select the %s membership level', 'paid-memberships-pro' ), $level->name ) ); ?>" class="<?php echo esc_attr( pmpro_get_element_class( 'pmpro_btn pmpro_btn-select', 'pmpro_btn-select' ) ); ?>" href="<?php echo esc_url( pmpro_url( "checkout", "?pmpro_level=" . $level->id, "https" ) ) ?>"><?php esc_html_e('Select', 'paid-memberships-pro' );?></a>
 										<?php } else { ?>      
 											<?php
 												//if it's a one-time-payment level, offer a link to renew	
 												if( pmpro_isLevelExpiringSoon( $user_level ) && $level->allow_signups ) {
 													?>
+														<?php /* translators: %s: Membership level name. */ ?>
 														<a aria-label="<?php echo esc_attr( sprintf( __('Renew your %s membership level', 'paid-memberships-pro' ), $level->name ) ); ?>" class="<?php echo esc_attr( pmpro_get_element_class( 'pmpro_btn pmpro_btn-renew pmpro_btn-select', 'pmpro_btn-select' ) ); ?>" href="<?php echo esc_url( pmpro_url( "checkout", "?pmpro_level=" . $level->id, "https" ) ) ?>"><?php esc_html_e('Renew', 'paid-memberships-pro' );?></a>
 													<?php
 												} else {
 													?>
+														<?php /* translators: %s: Membership level name. */ ?>
 														<a aria-label="<?php echo esc_attr( sprintf( __('View your %s membership account', 'paid-memberships-pro' ), $level->name ) ); ?>" class="<?php echo esc_attr( pmpro_get_element_class( 'pmpro_btn pmpro_btn-outline', 'pmpro_btn' ) ); ?>" href="<?php echo esc_url( pmpro_url( "account" ) ) ?>"><?php esc_html_e('Your&nbsp;Level', 'paid-memberships-pro' );?></a>
 													<?php
 												}

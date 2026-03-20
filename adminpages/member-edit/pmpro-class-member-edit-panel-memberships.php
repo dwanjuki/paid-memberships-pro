@@ -208,6 +208,7 @@ class PMPro_Member_Edit_Panel_Memberships extends PMPro_Member_Edit_Panel {
 									?>
 									<div class="pmpro-level_change-action-header">
 										<h4><?php esc_html_e( 'Edit Membership', 'paid-memberships-pro' ); ?></h4>
+										<?php /* translators: %s: Membership level name. */ ?>
 										<p><?php printf( esc_html__( 'You are editing the following membership level: %s.', 'paid-memberships-pro' ), '<strong>' . esc_html( $shown_level->name ) . '</strong>' ); ?></p>
 									</div>
 
@@ -296,6 +297,7 @@ class PMPro_Member_Edit_Panel_Memberships extends PMPro_Member_Edit_Panel {
 									?>
 									<div class="pmpro-level_change-action-header">
 										<h4><?php esc_html_e( 'Cancel Membership', 'paid-memberships-pro' ); ?></h4>
+										<?php /* translators: %s: Membership level name. */ ?>
 										<p><?php printf( esc_html__( 'This change will permanently cancel the following membership level: %s.', 'paid-memberships-pro' ),  '<strong>' . esc_html( $shown_level->name ) . '</strong>' ); ?></p>
 									</div>
 
@@ -308,6 +310,7 @@ class PMPro_Member_Edit_Panel_Memberships extends PMPro_Member_Edit_Panel {
 											<span class="pmpro-level_change-action-field">
 												<label>
 													<input type="checkbox" name="<?php echo esc_attr( $cancel_level_input_name_base ); ?>[refund]" value="<?php echo (int)$last_order->id; ?>" />
+													<?php /* translators: %s: Formatted monetary amount. */ ?>
 													<?php printf( esc_html__( 'Refund the last payment (%s).', 'paid-memberships-pro' ), pmpro_escape_price( $last_order->get_formatted_total() ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 												</label>
 											</span>
@@ -384,6 +387,7 @@ class PMPro_Member_Edit_Panel_Memberships extends PMPro_Member_Edit_Panel {
 											// If the group only allows a single level and the user already has a level, note the level that will be removed.
 											if ( empty( $group->allow_multiple_selections ) && ! empty( $shown_level ) ) {
 												?>
+												<?php /* translators: %s: Membership level name. */ ?>
 												<p><?php printf( esc_html__( 'This change will remove the following membership level: %s.', 'paid-memberships-pro' ), '<strong>' . esc_html( $shown_level->name ) . '</strong>' ); ?></p>
 												<?php
 											}
@@ -436,6 +440,7 @@ class PMPro_Member_Edit_Panel_Memberships extends PMPro_Member_Edit_Panel {
 														<span class="pmpro-level_change-action-field">
 														<label>
 															<input type="checkbox" name="<?php echo esc_attr( $add_level_to_group_input_name_base ); ?>[refund]" value="<?php echo (int)$last_order->id; ?>" />
+															<?php /* translators: %s: Formatted monetary amount. */ ?>
 															<?php printf( esc_html__( 'Refund the last payment (%s).', 'paid-memberships-pro' ), pmpro_escape_price( $last_order->get_formatted_total() ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 														</label>
 													</span>
@@ -740,7 +745,7 @@ class PMPro_Member_Edit_Panel_Memberships extends PMPro_Member_Edit_Panel {
 				if ( ! pmpro_refund_order( $refund_order ) ) {
 					pmpro_setMessage(
 						sprintf(
-							/* translators: %s is the order code. */
+							/* translators: %s is the order code (or order ID when no code exists). */
 							__( 'There was an error refunding order #%s. None of the submitted changes to this membership have been made. Please check the order notes for more information.', 'paid-memberships-pro' ),
 							$refund_order->code
 						) . ' <a href="' . esc_url( add_query_arg( array( 'page' => 'pmpro-orders', 'id' => $refund_order->id ), admin_url( 'admin.php' ) ) ) . '">' . esc_html__( 'View Order', 'paid-memberships-pro' ) . '</a>', 'pmpro_error'
@@ -877,7 +882,7 @@ class PMPro_Member_Edit_Panel_Memberships extends PMPro_Member_Edit_Panel {
 				if ( ! pmpro_refund_order( $refund_order ) ) {
 					pmpro_setMessage(
 						sprintf(
-							/* translators: %s is the order code. */
+							/* translators: %s is the order code (or order ID when no code exists). */
 							__( 'There was an error refunding order #%s. None of the submitted changes to this membership have been made. Please check the order notes for more information.', 'paid-memberships-pro' ),
 							$refund_order->code
 						) . ' <a href="' . esc_url( add_query_arg( array( 'page' => 'pmpro-orders', 'id' => $refund_order->id ), admin_url( 'admin.php' ) ) ) . '">' . esc_html__( 'View Order', 'paid-memberships-pro' ) . '</a>', 'pmpro_error'

@@ -86,15 +86,19 @@ function pmpro_add_user_taxonomy( $name, $name_plural ) {
 		'name'                       => ucwords( $name ),
 		'singular_name'              => ucwords( $name ),
 		'menu_name'                  => ucwords( $name_plural ),
+		/* translators: %s: Taxonomy label (plural form). */
 		'search_items'               => sprintf( esc_html__( 'Search %s', 'paid-memberships-pro' ), ucwords( $name_plural ) ),
 		'popular_items'              => sprintf( esc_html__( 'Popular %s', 'paid-memberships-pro' ), ucwords( $name_plural ) ),
 		'all_items'                  => sprintf( esc_html__( 'All %s', 'paid-memberships-pro' ), ucwords( $name_plural ) ),
+		/* translators: %s: Taxonomy label (singular form). */
 		'edit_item'                  => sprintf( esc_html__( 'Edit %s', 'paid-memberships-pro' ), ucwords( $name ) ),
 		'update_item'                => sprintf( esc_html__( 'Update %s', 'paid-memberships-pro' ), ucwords( $name ) ),
 		'add_new_item'               => sprintf( esc_html__( 'Add New %s', 'paid-memberships-pro' ), ucwords( $name ) ),
+		/* translators: %s: Taxonomy label (singular form). */
 		'new_item_name'              => sprintf( esc_html__( 'New %s Name', 'paid-memberships-pro' ), ucwords( $name ) ),
 		'separate_items_with_commas' => sprintf( esc_html__( 'Separate %s with commas', 'paid-memberships-pro' ), $name_plural ),
 		'add_or_remove_items'        => sprintf( esc_html__( 'Add or remove %s', 'paid-memberships-pro' ), $name_plural ),
+		/* translators: %s: Taxonomy label (plural form). */
 		'choose_from_most_used'      => sprintf( esc_html__( 'Choose from the most popular %s', 'paid-memberships-pro' ), $name_plural ),
 	);
 
@@ -228,9 +232,11 @@ function pmpro_display_fields_in_group( $group, $scope = 'checkout' ) {
 		'after_tos_fields',
 	);
 	if ( ! in_array( $group, $valid_groups ) ) {
+		/* translators: 1: Group slug, 2: Function name. */
 		_doing_it_wrong( __FUNCTION__, sprintf( esc_html__( 'The group %s should not be passed into %s. Use PMPro_Field_Group::display() instead.', 'paid-memberships-pro' ), esc_html( $group ), __FUNCTION__ ), '2.9.3' );
 	}
 	if ( $scope !== 'checkout' ) {
+		/* translators: 1: Scope name, 2: Function name. */
 		_doing_it_wrong( __FUNCTION__, sprintf( esc_html__( 'The scope %s should not be passed into %s. Use PMPro_Field_Group::display() instead.', 'paid-memberships-pro' ), esc_html( $scope ), __FUNCTION__ ), '2.9.3' );
 	}
 
@@ -411,9 +417,11 @@ function pmpro_checkout_user_creation_checks_user_fields( $okay ) {
 		$pmpro_error_fields = array_merge((array)$pmpro_error_fields, $required);
 
 		if( count( $required ) == 1 ) {
+			/* translators: %s: Comma-separated list of required field labels. */
 			$pmpro_msg = sprintf( esc_html__( 'The %s field is required.', 'paid-memberships-pro' ),  implode(", ", $required_labels) );
 			$pmpro_msgt = 'pmpro_error';
 		} else {
+			/* translators: %s: Comma-separated list of required field labels. */
 			$pmpro_msg = sprintf( esc_html__( 'The %s fields are required.', 'paid-memberships-pro' ),  implode(", ", $required_labels) );
 			$pmpro_msgt = 'pmpro_error';
 		}
@@ -515,9 +523,11 @@ function pmpro_registration_checks_for_user_fields( $okay ) {
 		$pmpro_error_fields = array_merge((array)$pmpro_error_fields, $required);
 
 		if( count( $required ) == 1 ) {
+			/* translators: %s: Comma-separated list of required field labels. */
 			$pmpro_msg = sprintf( esc_html__( 'The %s field is required.', 'paid-memberships-pro' ),  implode(", ", $required_labels) );
 			$pmpro_msgt = 'pmpro_error';
 		} else {
+			/* translators: %s: Comma-separated list of required field labels. */
 			$pmpro_msg = sprintf( esc_html__( 'The %s fields are required.', 'paid-memberships-pro' ),  implode(", ", $required_labels) );
 			$pmpro_msgt = 'pmpro_error';
 		}

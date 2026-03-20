@@ -29,6 +29,7 @@ function pmpro_prepare_pointer_scripts() {
 	// Just one pointer for now, but eventually we will have more
 	$id       = '#toplevel_page_pmpro-dashboard';
 	$content  = '<h3>' .  __( 'PMPro v2.0 Update', 'paid-memberships-pro' ) . '</h3>';
+	/* translators: %s: URL to the Discount Codes admin page. */
 	$content .= '<p>'. sprintf( __( "The Memberships menu has moved. Check out the new dashboard. The Membership Levels and Discount Codes pages can now be found under <a href=\"%s\">Settings</a>.", 'paid-memberships-pro' ) , 'admin.php?page=pmpro-membershiplevels' ). '</p>';
 
 	$options  = array(

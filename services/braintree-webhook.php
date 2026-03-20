@@ -377,6 +377,7 @@ if ( $webhookNotification->kind === Braintree_WebhookNotification::SUBSCRIPTION_
 	// We don't currently allow billing limits (number_of_billing_cycles) on Braintree subscriptions.
 	// But in case we get here, let's send the correct email to the admin.	
 	$myemail = new PMProEmail();
+	/* translators: %s: URL to the related WordPress admin page. */
 	$body = sprintf( __( "<p>A member's Braintree subscription has expired at your site. This typically happens if you've set up billing limits on your levels.</p><p>We have not removed the user's membership level.</p><p>You can view details on this user here: %s</p>", 'paid-memberships-pro' ), esc_url( admin_url( 'user-edit.php?user_id=' . $user_id ) ) );	
 	$myemail->template = 'braintree_subscription_expired';
 	$myemail->subject = sprintf( __( "A member's Braintree subscription has expired at %s", 'paid-memberships-pro' ), get_bloginfo( 'name' ) );

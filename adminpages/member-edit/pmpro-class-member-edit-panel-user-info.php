@@ -176,6 +176,7 @@ class PMPro_Member_Edit_Panel_User_Info extends PMPro_Member_Edit_Panel {
 						<input type="text" name="role" id="role" autocapitalize="none" autocorrect="off" autocomplete="off" disabled value="<?php echo esc_attr( empty( $role ) ? '&mdash; No role for this site &mdash;' : $role ); ?>">
 						<p class="description">
 							<?php
+							/* translators: %s: URL to the related WordPress admin page. */
 							printf( esc_html__( 'Roles can be changed from the %s page.', 'paid-memberships-pro' ), '<a href="' . esc_url( add_query_arg( array( 'user_id' => $user->ID ), admin_url( 'user-edit.php' ) ) ) . '" target="_blank">' . esc_html__( 'Edit User', 'paid-memberships-pro' ) . '</a>' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 							?>
 						</p>

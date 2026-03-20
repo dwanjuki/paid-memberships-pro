@@ -104,6 +104,7 @@
 			</div>
 			<div class="pmpro_section_inside">
 				<p>
+										<?php /* translators: %s: URL to PMPro documentation about stopping membership-site spam. */ ?>
 					<?php echo wp_kses( sprintf( __( 'To ensure your site is as protected as possible, we recommend setting up several spam protection methods. Read our full guide on <a href="%s" target="_blank">how to stop spam in your membership site</a> for more information about these options.', 'paid-memberships-pro' ), 'https://www.paidmembershipspro.com/how-to-stop-spam/' ), $allowed_pmpro_spam_protection_strings_html ); ?>
 				</p>
 				<table class="form-table">
@@ -149,6 +150,7 @@
 									}
 								?>
 								<p class="description">
+									<?php /* translators: 1: Opening anchor tag attributes including the link URL, 2: Closing anchor tag. */ ?>
 									<?php echo wp_kses( sprintf( __('With the Akismet Integration for Paid Memberships Pro, the same comment spam filters built into Akismet are used to detect and prevent membership checkout form abuse. This integration requires both the <a href="%1$s" target="_blank">Akismet plugin</a> and the <a href="%2$s" target="_blank">Akismet Integration for Paid Memberships Pro</a>.', 'paid-memberships-pro' ), 'https://wordpress.org/plugins/akismet/', 'https://www.paidmembershipspro.com/add-ons/pmpro-akismet/' ), $allowed_pmpro_spam_protection_strings_html ); ?>
 								</p>
 							</td>
@@ -163,6 +165,7 @@
 									<!-- For reference, removed the Yes - Free memberships only. option -->
 									<option value="2" <?php if( $spamprotection > 0 ) { ?>selected="selected"<?php } ?>><?php esc_html_e('Yes - Enable Spam Protection', 'paid-memberships-pro' );?></option>
 								</select>
+								<?php /* translators: 1: Formatted time, 2: Formatted time. */ ?>
 								<p class="description"><?php printf( esc_html__( 'Block IPs from checkout and login if there are more than %d failures within %d minutes.', 'paid-memberships-pro' ), (int)PMPRO_SPAM_ACTION_NUM_LIMIT, (int)round(PMPRO_SPAM_ACTION_TIME_LIMIT/60,2) );?></p>
 							</td>
 						</tr>
@@ -306,6 +309,7 @@ location ~ ^/wp-content/uploads/pmpro-[^/]+/ {
 									if ( $cloudflare_active === 'inactive' ) {
 										?>
 										<p class="description">
+											<?php /* translators: %s: URL to Cloudflare DNS firewall documentation. */ ?>
 											<?php echo wp_kses( sprintf( __( 'Consider setting up the <a href="%s" target="_blank">Cloudflare DNS firewall</a> to protect your site.', 'paid-memberships-pro' ), 'https://www.cloudflare.com/dns/dns-firewall/' ), $allowed_pmpro_spam_protection_strings_html ); ?>
 										</p>
 										<?php

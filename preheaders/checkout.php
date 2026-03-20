@@ -689,6 +689,7 @@ if ( ! empty( $pmpro_confirmed ) ) {
 	if ( $pmpro_requirebilling && ! get_option( "pmpro_gateway" ) ) {
 
 		if ( pmpro_isAdmin() ) {
+			/* translators: %s: URL to the related WordPress admin page. */
 			$pmpro_msg = sprintf( __( 'You must <a href="%s">set up a Payment Gateway</a> before any payments will be processed.', 'paid-memberships-pro' ), admin_url( 'admin.php?page=pmpro-paymentsettings' ) );
 		} else {
 			$pmpro_msg = __( "A Payment Gateway must be set up before any payments will be processed.", 'paid-memberships-pro' );

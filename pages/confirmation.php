@@ -41,6 +41,7 @@ if ( empty( $pmpro_invoice ) ) {
 
 				// Start building the confirmation message.
 				if ( 'success' != $pmpro_invoice->status ) {
+					/* translators: 1: Membership level name, 2: Membership level name, 3: Membership level name, 4: Membership level name. */
 					$confirmation_message = '<p>' . sprintf(__('Thank you for your membership to %1$s. Your %2$s membership will be activated once the payment has been completed.', 'paid-memberships-pro' ), get_bloginfo("name"), $pmpro_invoice->membership_level->name) . '</p>';
 				} else {
 					$confirmation_message = '<p>' . sprintf(__('Thank you for your membership to %s. Your %s membership is now active.', 'paid-memberships-pro' ), get_bloginfo("name"), $pmpro_invoice->membership_level->name) . '</p>';
@@ -54,6 +55,7 @@ if ( empty( $pmpro_invoice ) ) {
 
 				// Add some details to the confirmation message about the order.
 				if ( ! pmpro_isLevelFree( $pmpro_invoice->membership_level ) ) {
+					/* translators: 1: Email address, 2: Email address. */
 					$confirmation_message .= '<p>' . sprintf( __( 'Below are details about your membership account and a receipt for your initial membership order. A welcome email with a copy of your initial membership order has been sent to %s.', 'paid-memberships-pro' ), $pmpro_invoice->user->user_email ) . '</p>';
 				} else {
 					$confirmation_message .= '<p>' . sprintf( __( 'Below are details about your membership account. A welcome email has been sent to %s.', 'paid-memberships-pro' ), $pmpro_invoice->user->user_email ) . '</p>';

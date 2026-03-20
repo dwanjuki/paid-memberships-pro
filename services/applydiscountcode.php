@@ -85,6 +85,7 @@
 		$code_levels = apply_filters("pmpro_discount_code_level", $code_levels, $discount_code_id);
 	}
 
+	/* translators: %s: Order code (or order ID when no code exists). */
 	printf( esc_html__( 'The %s code has been applied to your order.', 'paid-memberships-pro' ), '<span class="' . esc_attr( pmpro_get_element_class( "pmpro_tag pmpro_tag-discount-code", "pmpro_tag-discount-code" ) ) . '">' . esc_html( $discount_code ) . '</span>' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 	$combined_level = null;
@@ -130,6 +131,7 @@
 
 			<?php
 			$html = [];
+			/* translators: %s: Order code (or order ID when no code exists). */
 			$html[] = '<p class="' . pmpro_get_element_class( 'pmpro_level_discount_applied' ) . '">' . sprintf( esc_html__( 'The %s code has been applied to your order.', 'paid-memberships-pro' ), '<span class="' . esc_attr( pmpro_get_element_class( "pmpro_tag pmpro_tag-discount-code", "pmpro_tag-discount-code" ) ) . '">' . esc_html( $discount_code ) . '</span>' ) . '</p>';
 
 			if ( count( $code_levels ) <= 1 ) {

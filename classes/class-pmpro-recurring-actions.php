@@ -242,6 +242,7 @@ class PMPro_Recurring_Actions {
 				$pmpro_email->sendMembershipExpiringEmail( $user, $membership_id );
 
 				if ( WP_DEBUG ) {
+					/* translators: %s: Email address. */
 					error_log( sprintf( esc_html__( 'Membership expiring email sent to %s. ', 'paid-memberships-pro' ), $user->user_email ) );
 				}
 			}
@@ -374,6 +375,7 @@ class PMPro_Recurring_Actions {
 				// Delete the expiration notice for this membership
 				delete_user_meta( $user_id, 'pmpro_expiration_notice_' . $membership_id );
 				if ( WP_DEBUG ) {
+					/* translators: %s: Email address. */
 					error_log( sprintf( __( 'Membership expired email sent to %s. ', 'paid-memberships-pro' ), $euser->user_email ) );
 				}
 			}
@@ -533,6 +535,7 @@ class PMPro_Recurring_Actions {
 				'user_login'            => $user->user_login,
 				'sitename'              => get_option( 'blogname' ),
 				'membership_id'         => $subscription_obj->get_membership_level_id(),
+				/* translators: %s: URL for the linked destination. */
 				'membership_level_name' => empty( $membership_level ) ? sprintf( esc_html__( '[Deleted level #%d]', 'paid-memberships-pro' ), $subscription_obj->get_membership_level_id() ) : $membership_level->name,
 				'membership_cost'       => $subscription_obj->get_cost_text(),
 				'billing_amount'        => pmpro_formatPrice( $subscription_obj->get_billing_amount() ),

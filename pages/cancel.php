@@ -76,6 +76,7 @@ $user_levels = pmpro_getMembershipLevelsForUser( $current_user->ID );
 			if ( count( $old_level_ids ) <= 1 ) {
 				if ( ! empty( $subscriptions ) && empty( $subscriptions[0]->get_orders( array( 'status' => 'pending', 'limit' => 1 ) ) ) ) {
 					// There is a subscription that does not have missed payments. Show the next payment date.
+					/* translators: %s: Formatted date. */
 					$cancellation_behavior_text = sprintf( __( 'Your subscription will be cancelled. You will not be billed again. Your membership will remain active until %s. ', 'paid-memberships-pro' ), $subscriptions[0]->get_next_payment_date( get_option( 'date_format' ) ) );
 				} else {
 					// No subscription. Show a generic message.
